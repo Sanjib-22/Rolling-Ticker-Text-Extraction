@@ -24,3 +24,14 @@ sample_4.mp4
 
 sample_6.mp4
   Coordinates : 0.032 0.922 0.802 0.053
+  CER : 0.2834
+  WER : 0.3705
+
+| Sample   | Channel    | Duration | Filtered CER | Filtered WER |
+|----------|------------|----------|--------------|--------------|
+| Sample 1 | DD India   | 1 min    | 0.1202       | 0.1949       |
+| Sample 2 | DD India   | 2 mins   | 0.0571       | 0.2187       |
+| Sample 3 | CNN News18 | 1 min    | 0.0328       | 0.0976       |
+| Sample 4 | CNN News18 | 2 mins   | 0.0379       | 0.0900       |
+| Sample 5 | DD India   | 10 mins  | 0.1536       | 0.3234       |
+| Sample 6 | CNN News18 | 10 mins  | 0.2834       | 0.3705       |
