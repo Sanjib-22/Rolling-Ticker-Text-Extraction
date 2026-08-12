@@ -1,0 +1,15 @@
+streamlit
+opencv-contrib-python
+numpy
+pandas
+matplotlib
+rapidfuzz
+jiwer
+pytesseract
+srt
+
+# System dependency (not installable via pip):
+#   Tesseract OCR must be on PATH — tesseract.py shells out to it.
+#   Ubuntu/Debian : sudo apt install tesseract-ocr
+#   macOS         : brew install tesseract
+#   Windows       : https://github.com/UB-Mannheim/tesseract/wiki

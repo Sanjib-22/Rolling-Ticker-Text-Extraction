@@ -1,0 +1,48 @@
+TICKER COORDINATES REFERENCE
+Format: left top width height (percentages 0.0-1.0)
+
+── DD INDIA (Express News) ──
+Resolution : 640x358
+
+sample_1.mp4
+  Coordinates : 0.189 0.908 0.766 0.053
+  CER : 0.1202 
+  WER : 0.1949
+
+sample_2.mp4
+  Coordinates : 0.191 0.908 0.759 0.042
+  CER : 0.0571
+  WER : 0.2187
+
+sample_5.mp4
+  Coordinates : 0.189 0.908 0.766 0.053
+  CER : 0.1536
+  WER : 0.3234
+
+
+── CNN NEWS18 ──
+Resolution : 640x358
+
+sample_3.mp4
+  Coordinates : 0.00 0.908 0.998 0.046 
+  CER : 0.0328
+  WER : 0.0976
+
+sample_4.mp4
+  Coordinates : 0.00 0.908 0.998 0.046 
+  CER : 0.0379
+  WER : 0.09
+
+sample_6.mp4
+  Coordinates : 0.032 0.922 0.802 0.053
+  CER : 0.2834
+  WER : 0.3705
+
+| Sample   | Channel    | Duration | Filtered CER | Filtered WER |
+|----------|------------|----------|--------------|--------------|
+| Sample 1 | DD India   | 1 min    | 0.1202       | 0.1949       |
+| Sample 2 | DD India   | 2 mins   | 0.0571       | 0.2187       |
+| Sample 3 | CNN News18 | 1 min    | 0.0328       | 0.0976       |
+| Sample 4 | CNN News18 | 2 mins   | 0.0379       | 0.0900       |
+| Sample 5 | DD India   | 10 mins  | 0.1536       | 0.3234       |
+| Sample 6 | CNN News18 | 10 mins  | 0.2834       | 0.3705       |

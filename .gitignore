@@ -1,0 +1,5 @@
+__pycache__/
+ocr/TesseractOCR/tmp/
+samples/
+.vscode/*
+!.vscode/settings.json
