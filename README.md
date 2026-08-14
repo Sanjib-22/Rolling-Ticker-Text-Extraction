@@ -59,8 +59,7 @@ The core extraction logic can be run directly, outside the web app:
    python scripts/run_on_segments.py samples/sample_3.mp4
    ```
 
-*Note: to check evaluation metrics, a ground truth file(.txt) is to be provided by the user.*
-*Note: extracted text, evaluation metrics, and the accumulated master word list are saved under `samples/master_files/` during these runs.*
+*Note: to check evaluation metrics, a ground truth file(.txt) is to be provided by the user. Extracted text, evaluation metrics, and the accumulated master word list are saved under `samples/master_files/` during these runs.*
 
 ---
 
@@ -85,7 +84,7 @@ streamlit run app.py
 #### Full length mode
 
 | **Video** | **Channel** | **Video Length** | **CER %** | **WER %** |
-|--|--|--|--|--|--|
+|--|--|--|--|--|
 | sample_1 | DD News | 1m 0s | **12.02%** | **19.49%** |
 | sample_2 | DD News | 2m 1s | **5.71%** | **21.87%** |
 | sample_1 | CNN-News18 | 1m 0s | **3.28%** | **9.76%** |

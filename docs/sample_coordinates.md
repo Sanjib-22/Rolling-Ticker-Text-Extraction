@@ -1,5 +1,6 @@
-TICKER COORDINATES REFERENCE
-Format: left top width height (percentages 0.0-1.0)
+#### TICKER COORDINATES REFERENCE
+
+###### Format: left top width height (percentages 0.0-1.0)
 
 **── DD INDIA (Express News) ──**
 *Resolution : 640x358*
