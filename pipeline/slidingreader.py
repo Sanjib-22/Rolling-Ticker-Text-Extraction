@@ -87,7 +87,7 @@ def concatenate_word_lists(word_lists):
     
 def remove_edge_words(word_list, width = None, height = None, **kwargs):
     
-    #Remove words that might be partially out of frame.
+    # Remove words that might be partially out of frame.
     if width != None:
       result = []
       for word in word_list:

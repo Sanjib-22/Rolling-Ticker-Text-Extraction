@@ -1,7 +1,3 @@
-"""
-Loads video and provide option to seek to a specific timestamp and read frames from it.
-"""
-
 import cv2
 from frameops import *
 

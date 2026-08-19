@@ -132,15 +132,6 @@ def evaluate_story(extracted: str, reference: str) -> dict:
     }
 
 def evaluate_fragment(extracted: str, script_lines: list[str]) -> dict:
-    """
-    Fragment-aware evaluation for segment-based extraction.
-    Slides a window of same word-length as extracted text across each
-    script line and finds the best-matching window position.
-    This is fairer than full-line comparison when only a fragment
-    of the story was visible within the segment duration.
-
-    Returns best_cer, best_wer, aligned_reference, matched_line.
-    """
     ext_clean  = clean_text(extracted)
     ext_words  = ext_clean.split()
     ext_len    = len(ext_words)
@@ -201,11 +192,8 @@ def evaluate_fragment(extracted: str, script_lines: list[str]) -> dict:
 def evaluate_segments(output_text: str, script_path: str) -> dict:
     """
     Segment-aware evaluation using fragment alignment.
-    Use this in run_on_segments.py instead of evaluate_all().
-
     For each extracted story, finds the best-aligned window within
     any script line rather than comparing against the full line.
-    Reports fragment_cer and fragment_wer alongside standard metrics.
     """
     script_lines = parse_script(script_path)
 

@@ -16,7 +16,7 @@ The project requires **Python 3.12**. Once your Python environment is ready, ins
 
 ```bash
 python -m venv venv
-.\venv\Scripts\Activate.ps1    # Windows (PowerShell)
+.\venv\Scripts\Activate.ps1    
 pip install -r requirements.txt
 ```
 
@@ -37,13 +37,7 @@ To find the ticker's exact region (as percentages of frame size) for a given cha
 python scripts/get_coordinates.py samples/your_video.mp4
 ```
 
-Reference coordinates for known channels are kept in [`docs/sample_coordinates.txt`](/docs/sample_coordinates.txt). To generate a synthetic test clip instead of using a real broadcast video:
-
-```bash
-python scripts/make_test_video.py
-```
-
-Videos and generated master word lists live under `samples/`, created automatically on first run.
+Reference coordinates for known channels are kept in [`docs/sample_coordinates.txt`](/docs/sample_coordinates.txt). Videos and generated master word lists live under `samples/`, created automatically on first run.
 
 ---
 

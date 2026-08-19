@@ -1,17 +1,3 @@
-"""
-run_on_segments.py
-Runs video segmentor first, then ticker extraction on each segment.
-Uses frame_count override to limit extraction to segment duration only.
-Dynamic jump_size adjusts based on segment length for reliable speed estimation.
-
-Usage:
-  python run_on_segments.py samples/sample_3.mp4
-  python run_on_segments.py samples/sample_4.mp4
-
-Update COORDS per channel:
-  DD India    : (0.189, 0.908, 0.766, 0.053)
-  CNN News18  : (0.00,  0.908, 0.998, 0.046)
-"""
 import sys
 import os
 import csv
@@ -28,14 +14,13 @@ from video import Video
 from tesseract import TesseractOCR
 from evaluator import evaluate_all, evaluate_segments, print_results
 
-# ── Config — update per sample ────────────────────────────────────────
 VIDEO_PATH    = sys.argv[1] if len(sys.argv) > 1 else 'samples/sample_6.mp4'
-COORDS        = (0.032, 0.922, 0.802, 0.053)  # DD India sample_3
+COORDS        = (0.032, 0.922, 0.802, 0.053)  
 
 SEG_METHOD    = 'Bhattachrya Distance'
 SEG_THRESHOLD = 0.7
-MIN_SEG_SECS  = 3.0    # skip segments shorter than this
-TARGET_SAMPLES = 80    # minimum sampled frames per segment for speed estimation
+MIN_SEG_SECS  = 3.0    
+TARGET_SAMPLES = 80    
 MASTER_DIR    = './samples/master_files'
 os.makedirs(MASTER_DIR, exist_ok=True)
 
@@ -58,7 +43,6 @@ base_parameters = {
     'master_tsv_path' : f'{MASTER_DIR}/master_words.tsv'
 }
 
-# ── Helpers ───────────────────────────────────────────────────────────
 def seconds_to_hms(s):
     h = int(s // 3600)
     m = int((s % 3600) // 60)
@@ -94,7 +78,6 @@ def clean_output(text):
     text = re.sub(r'\s+', ' ', text).strip()
     return text
 
-# ── Step 1: Run video segmentor ───────────────────────────────────────
 print(f"\n{'='*60}")
 print(f"VIDEO SEGMENTATION — {video_id}")
 print(f"{'='*60}")
@@ -119,7 +102,6 @@ segments   = [(boundaries[i], boundaries[i+1])
               for i in range(len(boundaries)-1)]
 print(f"Total segments : {len(segments)}")
 
-# ── Step 2: Get ticker window ─────────────────────────────────────────
 left_pct, top_pct, width_pct, height_pct = COORDS
 probe = Video(VIDEO_PATH)
 fh, fw = probe.height, probe.width
@@ -138,8 +120,6 @@ t_height = maxy - miny + 1
 t_width  = maxx - minx + 1
 
 print(f"Ticker window  : x={minx}-{maxx}, y={miny}-{maxy}\n")
-
-# ── Step 3: Extract ticker per segment ───────────────────────────────
 print(f"{'='*60}")
 print(f"TICKER EXTRACTION PER SEGMENT")
 print(f"{'='*60}")
@@ -153,28 +133,24 @@ for i, (start, end) in enumerate(segments):
     if seg_dur < MIN_SEG_SECS:
         print(f"\n{seg_label} — skipped (too short)")
         continue
-
     print(f"\n{seg_label}")
 
     try:
-        # ── Dynamic jump_size ─────────────────────────────────────────
         seg_frame_count = int(seg_dur * fps)
         dynamic_jump    = max(1, seg_frame_count // TARGET_SAMPLES)
         print(f"  frames={seg_frame_count}  jump_size={dynamic_jump}  "
               f"sampled≈{seg_frame_count // dynamic_jump}")
 
-        # ── Build parameters for this segment ────────────────────────
         params = dict(base_parameters)
         params['jump_size'] = dynamic_jump
         params['height']    = t_height
         params['width']     = t_width
 
-        # ── Load video, seek, override frame_count ───────────────────
         video = Video(VIDEO_PATH)
         video.seek(start)
         video.frame_count = seg_frame_count
         seek_frame = int(video.video_capture.get(cv2.CAP_PROP_POS_FRAMES))
-        video._seek_offset = seek_frame  # store offset
+        video._seek_offset = seek_frame   # type: ignore
         original_frame = video.frame.__func__
 
         def offset_frame(self, frame_number=None):
@@ -188,7 +164,6 @@ for i, (start, end) in enumerate(segments):
         ocr = TesseractOCR(**params)
         ocr._preprocesses['height'] = t_height
 
-        # ── Extract ──────────────────────────────────────────────────
         raw_stories = read_ticker(video, ticker_window, ocr, **params)
         add_story_start_end_times(raw_stories, video)
         try:
@@ -212,7 +187,6 @@ for i, (start, end) in enumerate(segments):
         output     = clean_output(raw_output)
         print(f"  Extracted: {output[:120]}{'...' if len(output) > 120 else ''}")
 
-        # ── Evaluate — fragment-aware ─────────────────────────────────
         seg_eval    = evaluate_segments(output, script_path)
         frag_cer    = seg_eval['fragment_cer']
         frag_wer    = seg_eval['fragment_wer']
@@ -221,7 +195,6 @@ for i, (start, end) in enumerate(segments):
             print(f"  Fragment CER: {frag_cer}  WER: {frag_wer} "
                   f"({seg_eval['count']} stories, window-aligned)")
 
-        # ── Per-story detail ──────────────────────────────────────────
         for s in seg_eval['per_story']:
             print(f"    Story {s['story_index']}: "
                   f"sim={s['similarity']}%  "
@@ -253,7 +226,6 @@ for i, (start, end) in enumerate(segments):
         print(f"  Error: {e}")
         continue
 
-# ── Step 4: Save CSV ──────────────────────────────────────────────────
 if results_per_segment:
     out_path = f'{MASTER_DIR}/{video_id}_segment_results.csv'
     fieldnames = ['segment','start','end','duration','jump_size',
@@ -265,7 +237,6 @@ if results_per_segment:
         writer.writerows(results_per_segment)
     print(f"\nResults saved → {out_path}")
 
-# ── Step 5: Print summary table ───────────────────────────────────────
 print(f"\n{'='*60}")
 print(f"SEGMENT SUMMARY — {video_id}")
 print(f"{'='*60}")

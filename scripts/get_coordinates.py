@@ -1,8 +1,3 @@
-"""
-get_coordinates.py
-Click on the video frame to get ticker coordinates as percentages.
-Usage: python get_coordinates.py samples/sample_1.mp4
-"""
 import cv2
 import sys
 
