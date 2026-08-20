@@ -37,7 +37,7 @@ To find the ticker's exact region (as percentages of frame size) for a given cha
 python scripts/get_coordinates.py samples/your_video.mp4
 ```
 
-Reference coordinates for known channels are kept in [`docs/sample_coordinates.txt`](/docs/sample_coordinates.md).
+Reference coordinates for known channels are kept in [`docs/sample_coordinates.md`](/docs/sample_coordinates.md).
 
 ---
 
