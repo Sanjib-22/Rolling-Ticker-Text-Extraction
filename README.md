@@ -37,7 +37,7 @@ To find the ticker's exact region (as percentages of frame size) for a given cha
 python scripts/get_coordinates.py samples/your_video.mp4
 ```
 
-Reference coordinates for known channels are kept in [`docs/sample_coordinates.txt`](/docs/sample_coordinates.txt). Videos and generated master word lists live under `samples/`, created automatically on first run.
+Reference coordinates for known channels are kept in [`docs/sample_coordinates.txt`](/docs/sample_coordinates.md).
 
 ---
 
@@ -103,29 +103,31 @@ streamlit run app.py
 ## Project Structure
 
 ```text
-rolling-ticker/
-├── app.py                 
-├── requirements.txt
-├── pipeline/               
-│   ├── video.py             
-│   ├── video_segmentor.py   
-│   ├── frameops.py          
-│   ├── tesseract.py         
-│   ├── slidingreader.py     
-│   ├── stringmetrics.py     
-│   ├── evaluator.py         
-│   └── helpers.py           
-├── scripts/                 
-│   ├── easyrun.py             
-│   ├── run_on_segments.py     
-│   ├── get_coordinates.py     
-│   ├── make_test_video.py
-│   └── broadcast_summarizer.py
-├── docs/
-│   └── sample_coordinates.txt   
-├── samples/                
-├── License                 
-└── README.md                
+Rolling_ticker/
+├─ .vscode/
+│  └─ settings.json
+├─ docs/
+│  ├─ Rolling_Ticker_Extraction_Report.pdf
+│  └─ sample_coordinates.md
+├─ pipeline/
+│  ├─ evaluator.py
+│  ├─ frameops.py
+│  ├─ helpers.py
+│  ├─ slidingreader.py
+│  ├─ stringmetrics.py
+│  ├─ tesseract.py
+│  ├─ video_segmentor.py
+│  └─ video.py
+├─ scripts/
+│  ├─ broadcast_summarizer.py
+│  ├─ easyrun.py
+│  ├─ get_coordinates.py
+│  └─ run_on_segments.py
+├─ .gitignore
+├─ app.py
+├─ LICENSE
+├─ README.md
+└─ requirements.txt               
 ```
 
 ---
@@ -137,3 +139,9 @@ rolling-ticker/
 ## License
 
 MIT License
+
+
+
+
+
+
