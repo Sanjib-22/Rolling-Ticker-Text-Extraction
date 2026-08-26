@@ -46,15 +46,15 @@ Reference coordinates for known channels are kept in [`docs/sample_coordinates.m
 The core extraction logic can be run directly, outside the web app:
 
 1. **Full length mode** — reads the ticker from a start timestamp to the end of the clip:
-   ```bash
+   ```
    python scripts/easyrun.py samples/sample_3.mp4
    ```
 2. **Segment mode** — splits the video on scene changes first, then reads each segment independently:
-   ```bash
+   ```
    python scripts/run_on_segments.py samples/sample_3.mp4
    ```
 
-*Note: to check evaluation metrics, a ground truth file(.txt) is to be provided by the user. Extracted text, evaluation metrics, and the accumulated master word list are saved under `samples/master_files/` during these runs.*
+*Note: extracted text, evaluation metrics, and the accumulated master word list are saved under `samples/master_files/` during these runs.*
 
 ---
 

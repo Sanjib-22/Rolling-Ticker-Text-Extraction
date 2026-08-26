@@ -1,0 +1,27 @@
+site_name: Rolling Ticker Extraction
+site_description: An end-to-end broadcast news ticker-text extraction and evaluation pipeline.
+repo_url: https://github.com/Sanjib-22/Rolling-Ticker-Text-Extraction
+repo_name: Sanjib-22/Rolling-Ticker-Text-Extraction
+
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - toc.follow
+    - content.code.copy
+  palette:
+    - scheme: slate
+      primary: red
+      accent: amber
+
+nav:
+  - Home: index.md
+  - Detailed Explanation: https://app.notion.com/p/Rolling-Ticker-Extraction-from-Broadcast-Video-96928754c2ce465db14f204e500944f4?source=copy_link
+
+markdown_extensions:
+  - admonition
+  - tables
+  - fenced_code
+  - toc:
+      permalink: true
