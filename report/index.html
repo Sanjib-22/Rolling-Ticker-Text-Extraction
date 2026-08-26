@@ -566,7 +566,7 @@
 <li><strong>Segment mode</strong> → the video is first split on scene changes (Bhattacharyya distance between frame histograms), and each resulting segment is read independently, producing per-segment extracted text plus optional per-story evaluation within that segment.</li>
 </ul>
 <p>The extraction pipeline is organized as follows:</p>
-<p><img alt="Architecture diagram" src="../architecture.png" /></p>
+<p><img alt="Architecture diagram" src="../arch.png" /></p>
 <p><em>Fig: System architecture of the proposed pipeline.</em></p>
 <h2 id="5-evaluation-methodology">5. Evaluation Methodology<a class="headerlink" href="#5-evaluation-methodology" title="Permanent link">&para;</a></h2>
 <p>Extraction accuracy is measured with Character Error Rate (CER) and Word Error Rate (WER), computed against an optional ground-truth script uploaded per video. Where no script is supplied, extraction still runs but no evaluation metrics are produced.</p>
