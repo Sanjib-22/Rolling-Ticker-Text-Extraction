@@ -12,23 +12,25 @@
       
       
       
+        <link rel="next" href="report/">
+      
       
         
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>Sample coordinates - Rolling Ticker Extraction</title>
+        <title>Rolling Ticker Extraction</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -47,7 +49,7 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -72,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ticker-coordinates-reference" class="md-skip">
+        <a href="#rolling-ticker-extraction-from-broadcast-video" class="md-skip">
           Skip to content
         </a>
       
@@ -88,7 +90,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Rolling Ticker Extraction" class="md-header__button md-logo" aria-label="Rolling Ticker Extraction" data-md-component="logo">
+    <a href="." title="Rolling Ticker Extraction" class="md-header__button md-logo" aria-label="Rolling Ticker Extraction" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -108,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Sample coordinates
+              Home
             
           </span>
         </div>
@@ -210,7 +212,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Rolling Ticker Extraction" class="md-nav__button md-logo" aria-label="Rolling Ticker Extraction" data-md-component="logo">
+    <a href="." title="Rolling Ticker Extraction" class="md-nav__button md-logo" aria-label="Rolling Ticker Extraction" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -237,10 +239,37 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
         
   
   
@@ -256,6 +285,114 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#project-demonstration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project Demonstration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environment Setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sample-videos-ticker-coordinates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sample Videos &amp; Ticker Coordinates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-via-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running via CLI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#web-app-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Web App Deployment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#author" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Author
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        License
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -267,7 +404,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../report/" class="md-nav__link">
+      <a href="report/" class="md-nav__link">
         
   
   
@@ -304,6 +441,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -312,30 +451,90 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ticker-coordinates-reference" class="md-nav__link">
+  <a href="#project-demonstration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        TICKER COORDINATES REFERENCE
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="TICKER COORDINATES REFERENCE">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#format-left-top-width-height-percentages-00-10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Format: left top width height (percentages 0.0-1.0)
+        Project Demonstration
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#environment-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environment Setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sample-videos-ticker-coordinates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sample Videos &amp; Ticker Coordinates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-via-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running via CLI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#web-app-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Web App Deployment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#author" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Author
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        License
+      
+    </span>
+  </a>
   
 </li>
       
@@ -359,26 +558,101 @@
   
 
 
-  <h1>Sample coordinates</h1>
+<h1 id="rolling-ticker-extraction-from-broadcast-video">Rolling Ticker Extraction from Broadcast Video<a class="headerlink" href="#rolling-ticker-extraction-from-broadcast-video" title="Permanent link">&para;</a></h1>
+<p><em>This project was developed during an internship at EICT IIT Guwahati under the guidance of Prithwijit Guha sir.</em></p>
+<p><strong><a href="report/">Read the Full Project Report Here</a></strong> - Browse the detailed extraction methodology, evaluation results, and pipeline architecture.</p>
+<p><strong><a href="https://github.com/Sanjib-22/Rolling-Ticker-Text-Extraction">View Source Code on GitHub</a></strong> - Access the complete repository, pipeline modules, and CLI scripts.</p>
+<h2 id="project-demonstration">Project Demonstration<a class="headerlink" href="#project-demonstration" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><strong>P.S. Additional notes not mentioned in the video:</strong></p>
+<ul>
+<li>Ticker region is set manually as percentage coordinates (left/top/width/height), not auto-detected.</li>
+<li>Text extraction uses Tesseract OCR via a sliding-window read over the ticker crop.</li>
+<li>Segment mode splits the video on scene changes (Bhattacharyya distance) before reading each segment independently; segments shorter than 3 seconds are skipped as unreliable.</li>
+</ul>
+</blockquote>
+<iframe width="100%" style="aspect-ratio:16/9;" src="https://www.youtube.com/watch?v=LZWPeqpmIco" title="Rolling Ticker — project walkthrough" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<h4 id="ticker-coordinates-reference">TICKER COORDINATES REFERENCE<a class="headerlink" href="#ticker-coordinates-reference" title="Permanent link">&para;</a></h4>
-<h6 id="format-left-top-width-height-percentages-00-10">Format: left top width height (percentages 0.0-1.0)<a class="headerlink" href="#format-left-top-width-height-percentages-00-10" title="Permanent link">&para;</a></h6>
-<p><strong>── DD INDIA (Express News) ──</strong>
-<em>Resolution : 640x358</em></p>
-<p>sample_1.mp4
-  Coordinates : 0.189, 0.908, 0.766, 0.053</p>
-<p>sample_2.mp4
-  Coordinates : 0.191, 0.908, 0.759, 0.042</p>
-<p>sample_5.mp4
-  Coordinates : 0.189, 0.908, 0.766, 0.053</p>
-<p><strong>── CNN NEWS18 ──</strong>
-<em>Resolution : 640x358</em></p>
-<p>sample_3.mp4
-  Coordinates : 0.00, 0.908, 0.998, 0.046 </p>
-<p>sample_4.mp4
-  Coordinates : 0.00, 0.908, 0.998, 0.046 </p>
-<p>sample_6.mp4
-  Coordinates : 0.032, 0.922, 0.802, 0.053</p>
+<!--
+  Replace YOUR_VIDEO_ID_HERE above once the walkthrough is uploaded:
+  1. Upload the screen recording to YouTube as Unlisted (viewable by anyone
+     with the link, without appearing in search/your channel listing).
+  2. Copy the ID from the URL: https://youtu.be/THIS_PART
+  3. Paste it in place of YOUR_VIDEO_ID_HERE above.
+-->
+
+<hr />
+<h2 id="environment-setup">Environment Setup<a class="headerlink" href="#environment-setup" title="Permanent link">&para;</a></h2>
+<p>The project requires <strong>Python 3.12</strong>. Once your Python environment is ready, install the required dependencies:</p>
+<pre><code class="language-bash">python -m venv venv
+.\venv\Scripts\Activate.ps1    # Windows (PowerShell)
+# source venv/bin/activate     # macOS/Linux
+pip install -r requirements.txt
+</code></pre>
+<p>Tesseract OCR must also be installed and available on your system <code>PATH</code> — the pipeline shells out to it directly, it isn't installed via pip:</p>
+<pre><code class="language-bash"># Windows
+https://github.com/UB-Mannheim/tesseract/wiki
+</code></pre>
+<hr />
+<h2 id="sample-videos-ticker-coordinates">Sample Videos &amp; Ticker Coordinates<a class="headerlink" href="#sample-videos-ticker-coordinates" title="Permanent link">&para;</a></h2>
+<p>To find the ticker's exact region (as percentages of frame size) for a given channel, run:</p>
+<pre><code class="language-bash">.\venv\Scripts\Activate.ps1
+python scripts/get_coordinates.py samples/your_video.mp4
+</code></pre>
+<p>Reference coordinates for known channels are kept in <a href="https://github.com/PLACEHOLDER_USER/PLACEHOLDER_REPO/blob/main/docs/sample_coordinates.txt"><code>docs/sample_coordinates.txt</code></a> in the repository. To generate a synthetic test clip instead of using a real broadcast video:</p>
+<pre><code class="language-bash">python scripts/make_test_video.py
+</code></pre>
+<p>Videos and generated master word lists live under <code>samples/</code>, created automatically on first run.</p>
+<hr />
+<h2 id="running-via-cli">Running via CLI<a class="headerlink" href="#running-via-cli" title="Permanent link">&para;</a></h2>
+<p>The core extraction logic can be run directly, outside the web app:</p>
+<ol>
+<li><strong>Full length mode</strong> — reads the ticker from a start timestamp to the end of the clip:
+   <code>python scripts/easyrun.py samples/sample_3.mp4</code></li>
+<li><strong>Segment mode</strong> — splits the video on scene changes first, then reads each segment independently:
+   <code>python scripts/run_on_segments.py samples/sample_3.mp4</code></li>
+</ol>
+<p><em>Note: extracted text, evaluation metrics, and the accumulated master word list are saved under <code>samples/master_files/</code> during these runs.</em></p>
+<hr />
+<h2 id="web-app-deployment">Web App Deployment<a class="headerlink" href="#web-app-deployment" title="Permanent link">&para;</a></h2>
+<p>The project includes a Streamlit web app to run extraction interactively, preview the ticker region, and watch results synced to video playback. <strong>Make sure to activate the necessary Python environment before running this</strong>.</p>
+<p><strong>Start the app</strong></p>
+<pre><code class="language-bash">.\venv\Scripts\Activate.ps1
+streamlit run app.py
+</code></pre>
+<blockquote>
+<p>Always run from the project root — a few paths (<code>samples/</code>, <code>ocr/TesseractOCR/tmp/</code>) resolve relative to the current working directory, not the file's location.</p>
+</blockquote>
+<hr />
+<h2 id="project-structure">Project Structure<a class="headerlink" href="#project-structure" title="Permanent link">&para;</a></h2>
+<pre><code>rolling-ticker/
+├── app.py                 Streamlit app — entry point
+├── requirements.txt
+├── pipeline/               Core extraction pipeline
+│   ├── video.py             Video frame access
+│   ├── video_segmentor.py   Scene-change based segmentation
+│   ├── frameops.py          Frame preprocessing
+│   ├── tesseract.py         OCR interface + Tesseract implementation
+│   ├── slidingreader.py     Ticker reading, story assembly
+│   ├── stringmetrics.py     Text similarity helpers
+│   ├── evaluator.py         CER/WER evaluation against ground truth
+│   └── helpers.py           Generic no-domain helpers
+├── scripts/                 Standalone CLI tools
+│   ├── easyrun.py             Full-length CLI run
+│   ├── run_on_segments.py     Segment-mode CLI run
+│   ├── get_coordinates.py     Find ticker ROI coordinates
+│   ├── make_test_video.py     Synthetic test clip
+│   └── broadcast_summarizer.py
+├── docs/
+│   └── sample_coordinates.txt   Example ticker ROI values by channel
+├── samples/                gitignored — runtime output, created automatically
+├── License                 MIT License
+└── README.md
+</code></pre>
+<h2 id="author">Author<a class="headerlink" href="#author" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/Sanjib-22">Sanjib Das</a></p>
+<h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
+<p>MIT License</p>
 
 
 
@@ -428,10 +702,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "toc.follow", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.instant", "navigation.tracking", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

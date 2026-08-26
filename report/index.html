@@ -1,0 +1,1345 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An end-to-end broadcast news ticker-text extraction and evaluation pipeline.">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Detailed Explanation - Rolling Ticker Extraction</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#rolling-ticker-extraction-from-broadcast-video" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Rolling Ticker Extraction" class="md-header__button md-logo" aria-label="Rolling Ticker Extraction" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Rolling Ticker Extraction
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Detailed Explanation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="amber"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Sanjib-22/Rolling-Ticker-Text-Extraction" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Sanjib-22/Rolling-Ticker-Text-Extraction
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Rolling Ticker Extraction" class="md-nav__button md-logo" aria-label="Rolling Ticker Extraction" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Rolling Ticker Extraction
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Sanjib-22/Rolling-Ticker-Text-Extraction" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Sanjib-22/Rolling-Ticker-Text-Extraction
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detailed Explanation
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detailed Explanation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tasks-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tasks / Progress
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#video-samples-for-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Video Samples for Evaluation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extraction-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extraction Architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evaluation-methodology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evaluation Methodology
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#full-length-mode-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full-Length Mode: Results
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#segment-mode-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Segment Mode: Results
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#full-length-vs-segment-mode-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full-Length vs. Segment Mode — Comparison
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pipeline Architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deployment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tasks-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tasks / Progress
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#video-samples-for-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Video Samples for Evaluation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extraction-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extraction Architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evaluation-methodology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evaluation Methodology
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#full-length-mode-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full-Length Mode: Results
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#segment-mode-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Segment Mode: Results
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#full-length-vs-segment-mode-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full-Length vs. Segment Mode — Comparison
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pipeline Architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deployment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="rolling-ticker-extraction-from-broadcast-video">Rolling Ticker Extraction from Broadcast Video<a class="headerlink" href="#rolling-ticker-extraction-from-broadcast-video" title="Permanent link">&para;</a></h1>
+<p><em>This project was developed during an internship at PLACEHOLDER_INSTITUTION under the guidance of PLACEHOLDER_MENTOR_NAME.</em></p>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>Extracting scrolling news-ticker text from broadcast video presents its own set of challenges distinct from subtitle or speech transcription. Ticker text is small, often low-contrast against a moving or brightly colored background band, scrolls continuously rather than appearing as discrete captions, and frequently overlaps with channel branding, secondary tickers, or on-screen graphics.</p>
+<p>This project builds a ticker-extraction pipeline for broadcast news video, using manual ticker-region selection, a sliding-window OCR approach, and story-boundary stitching to reconstruct individual news items from the continuously scrolling text. Two extraction strategies are evaluated — a <strong>full-length</strong> read from a fixed start timestamp to the end of the clip, and a <strong>segment mode</strong> that first splits the video on scene changes before reading each segment independently — and both are scored against ground-truth scripts using Character Error Rate (CER) and Word Error Rate (WER).</p>
+<p>This report documents the extraction methodology, the evaluation approach for each mode, the full results across six broadcast clips spanning two channels and three clip lengths, and a direct comparison of the two modes' accuracy.</p>
+<h2 id="tasks-progress">Tasks / Progress<a class="headerlink" href="#tasks-progress" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Preparing broadcast clips for evaluation</li>
+<li>Sample selection across channels and durations</li>
+<li>Ground-truth script preparation</li>
+<li>Ticker-region selection</li>
+<li>Manual coordinate specification (percentage-based ROI)</li>
+<li>Extraction architecture</li>
+<li>Sliding-window OCR over the ticker crop</li>
+<li>Story boundary detection and stitching</li>
+<li>Deciding evaluation methodology</li>
+<li>CER / WER via <code>stringmetrics</code></li>
+<li>Precision- vs. recall-based scoring for segment mode</li>
+<li>Full-length mode evaluation</li>
+<li>Segment mode evaluation</li>
+<li>Full-length vs. segment mode comparison</li>
+<li>Final pipeline architecture</li>
+<li>Deployment (Streamlit)</li>
+</ul>
+<h2 id="video-samples-for-evaluation">Video Samples for Evaluation<a class="headerlink" href="#video-samples-for-evaluation" title="Permanent link">&para;</a></h2>
+<p>To evaluate extraction accuracy realistically, six broadcast news clips were selected across two channels and three durations:</p>
+<ul>
+<li><strong>DD India</strong> — 1 min, 2 mins, 10 mins</li>
+<li><strong>CNN News18</strong> — 1 min, 2 mins, 10 mins</li>
+</ul>
+<p>Channels and durations were chosen deliberately: DD India and CNN News18 use visually different ticker styles (positioning, font, scroll speed, background contrast), and the three durations test whether extraction accuracy holds up as read length increases — a single continuous full-length read accumulates more opportunity for drift than a short clip.</p>
+<h2 id="extraction-architecture">Extraction Architecture<a class="headerlink" href="#extraction-architecture" title="Permanent link">&para;</a></h2>
+<p>The pipeline reads a manually specified ticker region (left, top, width, height, as percentages of frame size) rather than attempting automatic ticker-region detection. This was a deliberate simplification: broadcast ticker position and styling vary enough across channels that manual selection, verified with a live region preview before running extraction, proved more reliable than a general-purpose detector for the channels evaluated here.</p>
+<p>Within the selected region, the pipeline uses a sliding-window OCR approach: overlapping frame samples are read via Tesseract OCR, and a story-stitching step reconstructs individual news items from the continuously scrolling text by merging overlapping OCR reads and identifying story boundaries.</p>
+<p>Two modes are available:</p>
+<ul>
+<li><strong>Full length mode</strong> — given a single start timestamp, the ticker is read continuously to the end of the clip, producing a list of stories each with a <code>start_time</code>/<code>end_time</code>.</li>
+<li><strong>Segment mode</strong> — the video is first split on scene changes (Bhattacharyya distance between frame histograms), and each resulting segment is read independently, producing per-segment extracted text plus optional per-story evaluation within that segment.</li>
+</ul>
+<h2 id="evaluation-methodology">Evaluation Methodology<a class="headerlink" href="#evaluation-methodology" title="Permanent link">&para;</a></h2>
+<p>Extraction accuracy is measured with Character Error Rate (CER) and Word Error Rate (WER), computed against an optional ground-truth script uploaded per video. Where no script is supplied, extraction still runs but no evaluation metrics are produced.</p>
+<p><strong>Full-length mode</strong> evaluates each extracted story against its corresponding reference story directly.</p>
+<p><strong>Segment mode</strong> required a different approach. Text extraction was performed only on segments longer than 3 seconds — shorter segments yielded unreliable results due to the limited number of frames, which led to inaccurate speed estimation and poor image stitching. For per-segment story evaluation, a <strong>precision-based</strong> approach was used instead of a recall-based one: a recall-based comparison would have measured extracted text against reference stories containing characters not present within that segment's boundaries, artificially inflating CER/WER. Since segments generated via scene-change detection often contain <strong>incomplete</strong> ticker stories by construction, precision-based evaluation — scoring only what was actually extracted, against the portion of the reference it corresponds to — is the more appropriate metric.</p>
+<h2 id="full-length-mode-results">Full-Length Mode: Results<a class="headerlink" href="#full-length-mode-results" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Sample</th>
+<th>Channel</th>
+<th>Duration</th>
+<th>Filtered CER</th>
+<th>Filtered WER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sample 1</td>
+<td>DD India</td>
+<td>1 min</td>
+<td>0.1202</td>
+<td>0.1949</td>
+</tr>
+<tr>
+<td>Sample 2</td>
+<td>DD India</td>
+<td>2 mins</td>
+<td>0.0571</td>
+<td>0.2187</td>
+</tr>
+<tr>
+<td>Sample 3</td>
+<td>CNN News18</td>
+<td>1 min</td>
+<td>0.0328</td>
+<td>0.0976</td>
+</tr>
+<tr>
+<td>Sample 4</td>
+<td>CNN News18</td>
+<td>2 mins</td>
+<td>0.0379</td>
+<td>0.0900</td>
+</tr>
+<tr>
+<td>Sample 5</td>
+<td>DD India</td>
+<td>10 mins</td>
+<td>0.1536</td>
+<td>0.3234</td>
+</tr>
+<tr>
+<td>Sample 6</td>
+<td>CNN News18</td>
+<td>10 mins</td>
+<td>0.2834</td>
+<td>0.3705</td>
+</tr>
+<tr>
+<td><strong>Average (overall)</strong></td>
+<td></td>
+<td></td>
+<td><strong>0.1142</strong></td>
+<td><strong>0.2159</strong></td>
+</tr>
+<tr>
+<td><strong>Average — DD India</strong></td>
+<td></td>
+<td></td>
+<td><strong>0.1103</strong></td>
+<td><strong>0.2457</strong></td>
+</tr>
+<tr>
+<td><strong>Average — CNN News18</strong></td>
+<td></td>
+<td></td>
+<td><strong>0.1180</strong></td>
+<td><strong>0.1860</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Analysis:</strong> at 1–2 minute lengths, CNN News18 clips extract noticeably more accurately than DD India (CER ~0.035 vs. ~0.089 average). That gap narrows sharply at 10 minutes — CNN's Sample 6 (CER 0.2834) is the single worst result across all six clips, pulling CNN's channel average up to roughly match DD India's. Error rate appears to scale with clip duration for both channels, most likely from ticker drift, OCR degradation over longer sliding-window reads, or accumulated story-boundary misalignment across a long continuous read.</p>
+<h2 id="segment-mode-results">Segment Mode: Results<a class="headerlink" href="#segment-mode-results" title="Permanent link">&para;</a></h2>
+<p><em>Sample 4 produced no scene changes, so no segments were generated — it was evaluated using the entire 2-minute video instead (see the Full-Length Mode table above for its figures).</em></p>
+<p><strong>Sample 1</strong> — DD India, 1 min</p>
+<table>
+<thead>
+<tr>
+<th>SEG</th>
+<th>START</th>
+<th>END</th>
+<th>DUR</th>
+<th>JUMP</th>
+<th>STORIES</th>
+<th>FRAG CER</th>
+<th>FRAG WER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>00:00:00</td>
+<td>00:00:08</td>
+<td>8.4</td>
+<td>3</td>
+<td>1</td>
+<td>0.0000</td>
+<td>0.0000</td>
+</tr>
+<tr>
+<td>3</td>
+<td>00:00:09</td>
+<td>00:00:26</td>
+<td>16.8</td>
+<td>6</td>
+<td>3</td>
+<td>0.0611</td>
+<td>0.1111</td>
+</tr>
+<tr>
+<td>5</td>
+<td>00:00:28</td>
+<td>00:00:38</td>
+<td>10.27</td>
+<td>3</td>
+<td>2</td>
+<td>0.0593</td>
+<td>0.1429</td>
+</tr>
+<tr>
+<td>7</td>
+<td>00:00:40</td>
+<td>00:00:50</td>
+<td>10.27</td>
+<td>3</td>
+<td>2</td>
+<td>0.0000</td>
+<td>0.0000</td>
+</tr>
+<tr>
+<td><strong>Average</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>0.0301</strong></td>
+<td><strong>0.0635</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sample 2</strong> — DD India, 2 mins</p>
+<table>
+<thead>
+<tr>
+<th>SEG</th>
+<th>START</th>
+<th>END</th>
+<th>DUR</th>
+<th>JUMP</th>
+<th>STORIES</th>
+<th>FRAG CER</th>
+<th>FRAG WER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>00:00:00</td>
+<td>00:00:04</td>
+<td>4.67</td>
+<td>1</td>
+<td>1</td>
+<td>0.2031</td>
+<td>0.3000</td>
+</tr>
+<tr>
+<td>2</td>
+<td>00:00:04</td>
+<td>00:00:17</td>
+<td>13.07</td>
+<td>4</td>
+<td>3</td>
+<td>0.1151</td>
+<td>0.2333</td>
+</tr>
+<tr>
+<td>4</td>
+<td>00:00:19</td>
+<td>00:00:34</td>
+<td>14.93</td>
+<td>5</td>
+<td>3</td>
+<td>0.0887</td>
+<td>0.1939</td>
+</tr>
+<tr>
+<td>6</td>
+<td>00:00:36</td>
+<td>00:00:50</td>
+<td>14.0</td>
+<td>5</td>
+<td>3</td>
+<td>0.2486</td>
+<td>0.4872</td>
+</tr>
+<tr>
+<td>8</td>
+<td>00:00:51</td>
+<td>00:01:04</td>
+<td>13.07</td>
+<td>4</td>
+<td>3</td>
+<td>0.0208</td>
+<td>0.1429</td>
+</tr>
+<tr>
+<td>10</td>
+<td>00:01:06</td>
+<td>00:01:22</td>
+<td>15.87</td>
+<td>5</td>
+<td>4</td>
+<td>0.0573</td>
+<td>0.1708</td>
+</tr>
+<tr>
+<td>13</td>
+<td>00:01:24</td>
+<td>00:01:36</td>
+<td>12.13</td>
+<td>4</td>
+<td>3</td>
+<td>0.0199</td>
+<td>0.0741</td>
+</tr>
+<tr>
+<td>15</td>
+<td>00:01:38</td>
+<td>00:01:47</td>
+<td>9.33</td>
+<td>3</td>
+<td>3</td>
+<td>0.0831</td>
+<td>0.2063</td>
+</tr>
+<tr>
+<td><strong>Average</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>0.1046</strong></td>
+<td><strong>0.2261</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sample 3</strong> — CNN News18, 1 min</p>
+<table>
+<thead>
+<tr>
+<th>SEG</th>
+<th>START</th>
+<th>END</th>
+<th>DUR</th>
+<th>JUMP</th>
+<th>STORIES</th>
+<th>FRAG CER</th>
+<th>FRAG WER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>00:00:00</td>
+<td>00:00:27</td>
+<td>27.0</td>
+<td>8</td>
+<td>4</td>
+<td>0.0212</td>
+<td>0.1283</td>
+</tr>
+<tr>
+<td>2</td>
+<td>00:00:27</td>
+<td>00:00:31</td>
+<td>4.0</td>
+<td>1</td>
+<td>1</td>
+<td>0.0000</td>
+<td>0.0000</td>
+</tr>
+<tr>
+<td><strong>Average</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>0.0106</strong></td>
+<td><strong>0.0642</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sample 5</strong> — DD India, 10 mins</p>
+<p><em>Contains 46 segments in total; only the first 7 are shown below for brevity. The average row reflects the full segment set.</em></p>
+<table>
+<thead>
+<tr>
+<th>SEG</th>
+<th>START</th>
+<th>END</th>
+<th>DUR</th>
+<th>JUMP</th>
+<th>STORIES</th>
+<th>FRAG CER</th>
+<th>FRAG WER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>00:00:00</td>
+<td>00:00:05</td>
+<td>5.6</td>
+<td>2</td>
+<td>1</td>
+<td>0.0000</td>
+<td>0.0000</td>
+</tr>
+<tr>
+<td>3</td>
+<td>00:00:06</td>
+<td>00:00:22</td>
+<td>15.87</td>
+<td>5</td>
+<td>2</td>
+<td>0.1988</td>
+<td>0.4423</td>
+</tr>
+<tr>
+<td>5</td>
+<td>00:00:23</td>
+<td>00:00:36</td>
+<td>13.07</td>
+<td>4</td>
+<td>3</td>
+<td>0.1053</td>
+<td>0.2083</td>
+</tr>
+<tr>
+<td>7</td>
+<td>00:00:38</td>
+<td>00:00:50</td>
+<td>12.13</td>
+<td>4</td>
+<td>2</td>
+<td>0.0846</td>
+<td>0.1666</td>
+</tr>
+<tr>
+<td>9</td>
+<td>00:00:52</td>
+<td>00:00:59</td>
+<td>7.47</td>
+<td>2</td>
+<td>1</td>
+<td>0.1395</td>
+<td>0.1667</td>
+</tr>
+<tr>
+<td>11</td>
+<td>00:01:00</td>
+<td>00:01:13</td>
+<td>13.07</td>
+<td>4</td>
+<td>3</td>
+<td>0.0898</td>
+<td>0.3429</td>
+</tr>
+<tr>
+<td>13</td>
+<td>00:01:14</td>
+<td>00:01:24</td>
+<td>9.33</td>
+<td>3</td>
+<td>3</td>
+<td>0.0208</td>
+<td>0.1111</td>
+</tr>
+<tr>
+<td><strong>Average (all 46 segments)</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>0.1307</strong></td>
+<td><strong>0.2743</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sample 6</strong> — CNN News18, 10 mins</p>
+<table>
+<thead>
+<tr>
+<th>SEG</th>
+<th>START</th>
+<th>END</th>
+<th>DUR</th>
+<th>JUMP</th>
+<th>STORIES</th>
+<th>FRAG CER</th>
+<th>FRAG WER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>00:00:00</td>
+<td>00:07:54</td>
+<td>474.13</td>
+<td>177</td>
+<td>39</td>
+<td>0.1751</td>
+<td>0.3300</td>
+</tr>
+<tr>
+<td>2</td>
+<td>00:07:54</td>
+<td>00:07:59</td>
+<td>5.6</td>
+<td>2</td>
+<td>2</td>
+<td>0.0000</td>
+<td>0.0000</td>
+</tr>
+<tr>
+<td>3</td>
+<td>00:07:59</td>
+<td>00:08:08</td>
+<td>8.4</td>
+<td>3</td>
+<td>1</td>
+<td>0.0909</td>
+<td>0.3077</td>
+</tr>
+<tr>
+<td>4</td>
+<td>00:08:08</td>
+<td>00:08:22</td>
+<td>14.0</td>
+<td>5</td>
+<td>1</td>
+<td>0.0123</td>
+<td>0.0909</td>
+</tr>
+<tr>
+<td>7</td>
+<td>00:08:24</td>
+<td>00:08:45</td>
+<td>21.47</td>
+<td>8</td>
+<td>2</td>
+<td>0.0411</td>
+<td>0.1337</td>
+</tr>
+<tr>
+<td>8</td>
+<td>00:08:45</td>
+<td>00:09:46</td>
+<td>60.67</td>
+<td>22</td>
+<td>6</td>
+<td>0.0439</td>
+<td>0.2175</td>
+</tr>
+<tr>
+<td>12</td>
+<td>00:09:50</td>
+<td>00:09:55</td>
+<td>4.67</td>
+<td>1</td>
+<td>1</td>
+<td>0.8148</td>
+<td>1.0000</td>
+</tr>
+<tr>
+<td><strong>Average</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>0.1683</strong></td>
+<td><strong>0.2971</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>Note: Sample 6's first segment spans nearly 8 minutes (474s) — the scene-change detector found essentially one long stable shot at the start of this clip, making segment mode behave close to full-length mode for that portion.</em></p>
+<p><strong>Analysis:</strong> across the four shorter samples (1 and 2 minute clips), fragment CER stays low (0.01–0.10), consistent with the precision-based scoring approach — each segment's extracted text is judged only against the reference text it actually corresponds to. Sample 2 is a partial outlier, with several individual segments (1, 6) showing high fragment error despite the sample's overall average staying moderate. The two 10-minute samples show visibly higher fragment averages (0.13, 0.17), and Sample 6 in particular contains one segment (segment 12, a 4.67s fragment) with a fragment CER of 0.8148 — a single short, low-confidence segment substantially skewing that sample's average upward.</p>
+<h2 id="full-length-vs-segment-mode-comparison">Full-Length vs. Segment Mode — Comparison<a class="headerlink" href="#full-length-vs-segment-mode-comparison" title="Permanent link">&para;</a></h2>
+<p>The table below aggregates both modes' CER and WER across all six evaluation videos, mirroring how the extraction strategies are compared directly.</p>
+<table>
+<thead>
+<tr>
+<th>Sample</th>
+<th>Channel</th>
+<th>Duration</th>
+<th>Full-Length CER</th>
+<th>Segment Avg CER</th>
+<th>Full-Length WER</th>
+<th>Segment Avg WER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sample 1</td>
+<td>DD India</td>
+<td>1 min</td>
+<td>0.1202</td>
+<td>0.0301</td>
+<td>0.1949</td>
+<td>0.0635</td>
+</tr>
+<tr>
+<td>Sample 2</td>
+<td>DD India</td>
+<td>2 mins</td>
+<td>0.0571</td>
+<td>0.1046</td>
+<td>0.2187</td>
+<td>0.2261</td>
+</tr>
+<tr>
+<td>Sample 3</td>
+<td>CNN News18</td>
+<td>1 min</td>
+<td>0.0328</td>
+<td>0.0106</td>
+<td>0.0976</td>
+<td>0.0642</td>
+</tr>
+<tr>
+<td>Sample 4</td>
+<td>CNN News18</td>
+<td>2 mins</td>
+<td>0.0379</td>
+<td>n/a — no segments</td>
+<td>0.0900</td>
+<td>n/a — no segments</td>
+</tr>
+<tr>
+<td>Sample 5</td>
+<td>DD India</td>
+<td>10 mins</td>
+<td>0.1536</td>
+<td>0.1307</td>
+<td>0.3234</td>
+<td>0.2743</td>
+</tr>
+<tr>
+<td>Sample 6</td>
+<td>CNN News18</td>
+<td>10 mins</td>
+<td>0.2834</td>
+<td>0.1683</td>
+<td>0.3705</td>
+<td>0.2971</td>
+</tr>
+<tr>
+<td><strong>Average</strong>*</td>
+<td></td>
+<td></td>
+<td><strong>0.1142</strong></td>
+<td><strong>0.0889</strong></td>
+<td><strong>0.2159</strong></td>
+<td><strong>0.1850</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>*Average across the five samples where segment mode produced results (excludes Sample 4).</em></p>
+<p><strong>Why segment mode tends to score lower error:</strong> segment mode shows a lower average CER/WER than full-length mode on four of five comparable samples — most visibly on the two 10-minute clips, where full-length mode's error compounds over a much longer continuous read. This is consistent with segment mode's precision-based evaluation: shorter, scene-bounded fragments give the OCR/story-assembly pipeline less room to drift or misalign story boundaries than one long continuous read does.</p>
+<p>Sample 2 is the exception — segment mode's average CER is nearly double full-length mode's (0.1046 vs. 0.0571). Its segments were also comparatively short and numerous (8 segments across 2 minutes, durations from 4.67s to 15.87s), close to the pipeline's own 3-second minimum-duration filter, which may partly explain the reduced reliability there relative to the other samples.</p>
+<p><strong>Caveat:</strong> the source data confirms segment-mode evaluation is precision-based; whether the full-length figures use the same evaluation basis isn't independently confirmed here, so the deltas above should be read as directionally informative rather than strictly like-for-like until that's verified.</p>
+<h2 id="pipeline-architecture">Pipeline Architecture<a class="headerlink" href="#pipeline-architecture" title="Permanent link">&para;</a></h2>
+<p>The extraction pipeline is organized as follows:</p>
+<pre><code>Video Input (upload or direct link)
+        │
+        ▼
+Manual Ticker Region Selection (percentage coordinates, live preview)
+        │
+        ▼
+   ┌─────────────┴─────────────┐
+   ▼                           ▼
+Full Length Mode          Segment Mode
+(start timestamp,         (scene-change split via
+ read to end)              Bhattacharyya distance,
+   │                        each segment read
+   │                        independently)
+   ▼                           ▼
+Sliding-Window OCR (Tesseract) over ticker crop
+        │
+        ▼
+Story Stitching (merge overlapping reads, detect story boundaries)
+        │
+        ▼
+Optional Evaluation (CER/WER against uploaded ground-truth script)
+        │
+        ▼
+Results: story/segment list with timestamps, synced to video playback
+</code></pre>
+<p>The pipeline's Python modules (<code>pipeline/</code>) are called directly by the Streamlit app — there is no separate backend/API layer, since extraction runs synchronously within the same process as the UI.</p>
+<h2 id="deployment">Deployment<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h2>
+<p>Unlike a decoupled backend/frontend architecture, this project ships as a single Streamlit application — extraction, evaluation, and the results UI (including video playback synced to the extracted transcript) all run within one process.</p>
+<p><strong>Running the app</strong></p>
+<pre><code class="language-bash">streamlit run app.py
+</code></pre>
+<p>This differs from a typical FastAPI + React split: there's no separate API server, streaming response, or client-side build step. The trade-off is simplicity of deployment against the more granular real-time streaming a decoupled architecture could offer — reasonable here since extraction on a single video completes in well under the time a user would wait regardless.</p>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>Across six broadcast clips, segment mode's precision-based evaluation shows a lower average error rate than full-length mode's continuous read, most clearly on longer (10-minute) clips where full-length mode's error compounds over the extended read. Full-length mode remains simpler to reason about and doesn't depend on scene-change detection finding meaningful cut points — Sample 4's lack of scene changes shows that dependency directly. The choice between modes in practice likely depends on clip length and how visually static the source video is, rather than one mode being unconditionally better than the other.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "toc.follow", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
