@@ -2,7 +2,7 @@
 
 *This project was developed during an internship at EICT IIT Guwahati under the guidance of Prithwijit Guha sir.*
 
-**[Read the Full Project Report Here](https://app.notion.com/p/Rolling-Ticker-Extraction-from-Broadcast-Video-96928754c2ce465db14f204e500944f4?source=copy_link)** - Browse the detailed extraction methodology, evaluation results, and pipeline architecture.
+**[Read the Full Project Report Here](report.md)** - Browse the detailed extraction methodology, evaluation results, and pipeline architecture.
 
 **[View Source Code on GitHub](https://github.com/Sanjib-22/Rolling-Ticker-Text-Extraction)** - Access the complete repository, pipeline modules, and CLI scripts.
 
@@ -14,7 +14,7 @@
 > - Text extraction uses Tesseract OCR via a sliding-window read over the ticker crop.
 > - Segment mode splits the video on scene changes (Bhattacharyya distance) before reading each segment independently; segments shorter than 3 seconds are skipped as unreliable.
 
-<iframe width="100%" style="aspect-ratio:16/9;" src="https://www.youtube.com/watch?v=6X41XHpkvZ4" title="Rolling Ticker — project walkthrough" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="100%" style="aspect-ratio:16/9;" src="https://www.youtube.com/watch?v=LZWPeqpmIco" title="Rolling Ticker — project walkthrough" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <!--
   Replace YOUR_VIDEO_ID_HERE above once the walkthrough is uploaded:
@@ -32,13 +32,15 @@ The project requires **Python 3.12**. Once your Python environment is ready, ins
 
 ```bash
 python -m venv venv
-.\venv\Scripts\Activate.ps1    
+.\venv\Scripts\Activate.ps1    # Windows (PowerShell)
+# source venv/bin/activate     # macOS/Linux
 pip install -r requirements.txt
 ```
 
 Tesseract OCR must also be installed and available on your system `PATH` — the pipeline shells out to it directly, it isn't installed via pip:
 
 ```bash
+# Windows
 https://github.com/UB-Mannheim/tesseract/wiki
 ```
 
@@ -53,7 +55,13 @@ To find the ticker's exact region (as percentages of frame size) for a given cha
 python scripts/get_coordinates.py samples/your_video.mp4
 ```
 
-Reference coordinates for known channels are kept in [`docs/sample_coordinates.md`](/docs/sample_coordinates.md).
+Reference coordinates for known channels are kept in [`docs/sample_coordinates.txt`](https://github.com/PLACEHOLDER_USER/PLACEHOLDER_REPO/blob/main/docs/sample_coordinates.txt) in the repository. To generate a synthetic test clip instead of using a real broadcast video:
+
+```bash
+python scripts/make_test_video.py
+```
+
+Videos and generated master word lists live under `samples/`, created automatically on first run.
 
 ---
 
@@ -76,9 +84,10 @@ The core extraction logic can be run directly, outside the web app:
 
 ## Web App Deployment
 
-The project includes a Streamlit web app to run extraction interactively, preview the ticker region, and watch results synced to video playback. **Make sure to activate the necessary Python environment before running this.**
+The project includes a Streamlit web app to run extraction interactively, preview the ticker region, and watch results synced to video playback. **Make sure to activate the necessary Python environment before running this**.
 
 **Start the app**
+
 ```bash
 .\venv\Scripts\Activate.ps1
 streamlit run app.py
@@ -92,7 +101,7 @@ streamlit run app.py
 
 ```
 rolling-ticker/
-├── app.py                 Streamlit app 
+├── app.py                 Streamlit app — entry point
 ├── requirements.txt
 ├── pipeline/               Core extraction pipeline
 │   ├── video.py             Video frame access
@@ -111,8 +120,8 @@ rolling-ticker/
 │   └── broadcast_summarizer.py
 ├── docs/
 │   └── sample_coordinates.txt   Example ticker ROI values by channel
-├── samples/                Gitignored - runtime output, created automatically
-├── License                 
+├── samples/                gitignored — runtime output, created automatically
+├── License                 MIT License
 └── README.md
 ```
 
