@@ -1,8 +1,6 @@
 # Rolling Ticker Extraction from Broadcast Video
 
-*This project was developed during an internship at PLACEHOLDER_INSTITUTION under the guidance of PLACEHOLDER_MENTOR_NAME.*
-
-## Introduction
+## 1. Introduction
 
 Extracting scrolling news-ticker text from broadcast video presents its own set of challenges distinct from subtitle or speech transcription. Ticker text is small, often low-contrast against a moving or brightly colored background band, scrolls continuously rather than appearing as discrete captions, and frequently overlaps with channel branding, secondary tickers, or on-screen graphics.
 
@@ -10,7 +8,7 @@ This project builds a ticker-extraction pipeline for broadcast news video, using
 
 This report documents the extraction methodology, the evaluation approach for each mode, the full results across six broadcast clips spanning two channels and three clip lengths, and a direct comparison of the two modes' accuracy.
 
-## Tasks / Progress
+## 2. Tasks / Progress
 
 - Preparing broadcast clips for evaluation
   - Sample selection across channels and durations
@@ -29,7 +27,7 @@ This report documents the extraction methodology, the evaluation approach for ea
 - Final pipeline architecture
 - Deployment (Streamlit)
 
-## Video Samples for Evaluation
+## 3. Video Samples for Evaluation
 
 To evaluate extraction accuracy realistically, six broadcast news clips were selected across two channels and three durations:
 
@@ -38,7 +36,7 @@ To evaluate extraction accuracy realistically, six broadcast news clips were sel
 
 Channels and durations were chosen deliberately: DD India and CNN News18 use visually different ticker styles (positioning, font, scroll speed, background contrast), and the three durations test whether extraction accuracy holds up as read length increases — a single continuous full-length read accumulates more opportunity for drift than a short clip.
 
-## Extraction Architecture
+## 4. Extraction Architecture
 
 The pipeline reads a manually specified ticker region (left, top, width, height, as percentages of frame size) rather than attempting automatic ticker-region detection. This was a deliberate simplification: broadcast ticker position and styling vary enough across channels that manual selection, verified with a live region preview before running extraction, proved more reliable than a general-purpose detector for the channels evaluated here.
 
@@ -49,7 +47,7 @@ Two modes are available:
 - **Full length mode** — given a single start timestamp, the ticker is read continuously to the end of the clip, producing a list of stories each with a `start_time`/`end_time`.
 - **Segment mode** — the video is first split on scene changes (Bhattacharyya distance between frame histograms), and each resulting segment is read independently, producing per-segment extracted text plus optional per-story evaluation within that segment.
 
-## Evaluation Methodology
+## 5. Evaluation Methodology
 
 Extraction accuracy is measured with Character Error Rate (CER) and Word Error Rate (WER), computed against an optional ground-truth script uploaded per video. Where no script is supplied, extraction still runs but no evaluation metrics are produced.
 
@@ -57,7 +55,7 @@ Extraction accuracy is measured with Character Error Rate (CER) and Word Error R
 
 **Segment mode** required a different approach. Text extraction was performed only on segments longer than 3 seconds — shorter segments yielded unreliable results due to the limited number of frames, which led to inaccurate speed estimation and poor image stitching. For per-segment story evaluation, a **precision-based** approach was used instead of a recall-based one: a recall-based comparison would have measured extracted text against reference stories containing characters not present within that segment's boundaries, artificially inflating CER/WER. Since segments generated via scene-change detection often contain **incomplete** ticker stories by construction, precision-based evaluation — scoring only what was actually extracted, against the portion of the reference it corresponds to — is the more appropriate metric.
 
-## Full-Length Mode: Results
+## 6. Full-Length Mode: Results
 
 | Sample | Channel | Duration | Filtered CER | Filtered WER |
 |--------|------------|----------|---------------|---------------|
@@ -73,7 +71,7 @@ Extraction accuracy is measured with Character Error Rate (CER) and Word Error R
 
 **Analysis:** at 1–2 minute lengths, CNN News18 clips extract noticeably more accurately than DD India (CER ~0.035 vs. ~0.089 average). That gap narrows sharply at 10 minutes — CNN's Sample 6 (CER 0.2834) is the single worst result across all six clips, pulling CNN's channel average up to roughly match DD India's. Error rate appears to scale with clip duration for both channels, most likely from ticker drift, OCR degradation over longer sliding-window reads, or accumulated story-boundary misalignment across a long continuous read.
 
-## Segment Mode: Results
+## 7. Segment Mode: Results
 
 *Sample 4 produced no scene changes, so no segments were generated — it was evaluated using the entire 2-minute video instead (see the Full-Length Mode table above for its figures).*
 
@@ -141,7 +139,7 @@ Extraction accuracy is measured with Character Error Rate (CER) and Word Error R
 
 **Analysis:** across the four shorter samples (1 and 2 minute clips), fragment CER stays low (0.01–0.10), consistent with the precision-based scoring approach — each segment's extracted text is judged only against the reference text it actually corresponds to. Sample 2 is a partial outlier, with several individual segments (1, 6) showing high fragment error despite the sample's overall average staying moderate. The two 10-minute samples show visibly higher fragment averages (0.13, 0.17), and Sample 6 in particular contains one segment (segment 12, a 4.67s fragment) with a fragment CER of 0.8148 — a single short, low-confidence segment substantially skewing that sample's average upward.
 
-## Full-Length vs. Segment Mode — Comparison
+## 8. Full-Length vs. Segment Mode — Comparison
 
 The table below aggregates both modes' CER and WER across all six evaluation videos, mirroring how the extraction strategies are compared directly.
 
@@ -163,7 +161,7 @@ Sample 2 is the exception — segment mode's average CER is nearly double full-l
 
 **Caveat:** the source data confirms segment-mode evaluation is precision-based; whether the full-length figures use the same evaluation basis isn't independently confirmed here, so the deltas above should be read as directionally informative rather than strictly like-for-like until that's verified.
 
-## Pipeline Architecture
+## 9. Pipeline Architecture
 
 The extraction pipeline is organized as follows:
 
@@ -196,7 +194,7 @@ Results: story/segment list with timestamps, synced to video playback
 
 The pipeline's Python modules (`pipeline/`) are called directly by the Streamlit app — there is no separate backend/API layer, since extraction runs synchronously within the same process as the UI.
 
-## Deployment
+## 10. Deployment
 
 Unlike a decoupled backend/frontend architecture, this project ships as a single Streamlit application — extraction, evaluation, and the results UI (including video playback synced to the extracted transcript) all run within one process.
 
@@ -207,6 +205,6 @@ streamlit run app.py
 
 This differs from a typical FastAPI + React split: there's no separate API server, streaming response, or client-side build step. The trade-off is simplicity of deployment against the more granular real-time streaming a decoupled architecture could offer — reasonable here since extraction on a single video completes in well under the time a user would wait regardless.
 
-## Conclusion
+## 11. Conclusion
 
 Across six broadcast clips, segment mode's precision-based evaluation shows a lower average error rate than full-length mode's continuous read, most clearly on longer (10-minute) clips where full-length mode's error compounds over the extended read. Full-length mode remains simpler to reason about and doesn't depend on scene-change detection finding meaningful cut points — Sample 4's lack of scene changes shows that dependency directly. The choice between modes in practice likely depends on clip length and how visually static the source video is, rather than one mode being unconditionally better than the other.

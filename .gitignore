@@ -3,3 +3,4 @@ ocr/TesseractOCR/tmp/
 samples/
 .vscode/*
 !.vscode/settings.json
+site/

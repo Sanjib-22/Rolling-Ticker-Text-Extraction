@@ -8,6 +8,8 @@ This repository contains an end-to-end pipeline for reading scrolling news-ticke
 
 [Progress_Report_Notion](https://app.notion.com/p/Rolling-Ticker-Extraction-from-Broadcast-Video-96928754c2ce465db14f204e500944f4?source=copy_link) 
 
+[Github Page for this Project](https://sanjib-22.github.io/Rolling-Ticker-Text-Extraction/)
+
 ---
 
 ## Environment Setup
