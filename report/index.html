@@ -377,10 +377,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-tasks-progress" class="md-nav__link">
+  <a href="#2-project-progress-list" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Tasks / Progress
+        2. Project Progress List
       
     </span>
   </a>
@@ -399,10 +399,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-extraction-architecture" class="md-nav__link">
+  <a href="#4-pipeline-architecture" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Extraction Architecture
+        4. Pipeline Architecture
       
     </span>
   </a>
@@ -421,10 +421,60 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-full-length-mode-results" class="md-nav__link">
+  <a href="#6-results" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. Full-Length Mode: Results
+        6. Results
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#full-length-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full-Length Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#segment-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Segment Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-length-vs-segment-mode-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full-Length vs. Segment Mode - Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Deployment
       
     </span>
   </a>
@@ -432,54 +482,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-segment-mode-results" class="md-nav__link">
+  <a href="#8-conclusion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. Segment Mode: Results
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-full-length-vs-segment-mode-comparison" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8. Full-Length vs. Segment Mode — Comparison
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-pipeline-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        9. Pipeline Architecture
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-deployment" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        10. Deployment
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11-conclusion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        11. Conclusion
+        8. Conclusion
       
     </span>
   </a>
@@ -517,47 +523,58 @@
 <h1 id="rolling-ticker-extraction-from-broadcast-video">Rolling Ticker Extraction from Broadcast Video<a class="headerlink" href="#rolling-ticker-extraction-from-broadcast-video" title="Permanent link">&para;</a></h1>
 <h2 id="1-introduction">1. Introduction<a class="headerlink" href="#1-introduction" title="Permanent link">&para;</a></h2>
 <p>Extracting scrolling news-ticker text from broadcast video presents its own set of challenges distinct from subtitle or speech transcription. Ticker text is small, often low-contrast against a moving or brightly colored background band, scrolls continuously rather than appearing as discrete captions, and frequently overlaps with channel branding, secondary tickers, or on-screen graphics.</p>
-<p>This project builds a ticker-extraction pipeline for broadcast news video, using manual ticker-region selection, a sliding-window OCR approach, and story-boundary stitching to reconstruct individual news items from the continuously scrolling text. Two extraction strategies are evaluated — a <strong>full-length</strong> read from a fixed start timestamp to the end of the clip, and a <strong>segment mode</strong> that first splits the video on scene changes before reading each segment independently — and both are scored against ground-truth scripts using Character Error Rate (CER) and Word Error Rate (WER).</p>
+<p>This project builds a ticker-extraction pipeline for broadcast news video, using manual ticker-region selection, a sliding-window OCR approach, and story-boundary stitching to reconstruct individual news items from the continuously scrolling text. Two extraction strategies are evaluated - a full-length read from a fixed start timestamp to the end of the clip, and a segment mode that first splits the video on scene changes before reading each segment independently - and both are scored against ground-truth scripts using Character Error Rate (CER) and Word Error Rate (WER).</p>
 <p>This report documents the extraction methodology, the evaluation approach for each mode, the full results across six broadcast clips spanning two channels and three clip lengths, and a direct comparison of the two modes' accuracy.</p>
-<h2 id="2-tasks-progress">2. Tasks / Progress<a class="headerlink" href="#2-tasks-progress" title="Permanent link">&para;</a></h2>
+<h2 id="2-project-progress-list">2. Project Progress List<a class="headerlink" href="#2-project-progress-list" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Preparing broadcast clips for evaluation</li>
+<li>Preparing broadcast clips for evaluation<ul>
 <li>Sample selection across channels and durations</li>
 <li>Ground-truth script preparation</li>
-<li>Ticker-region selection</li>
+</ul>
+</li>
+<li>Ticker-region selection<ul>
 <li>Manual coordinate specification (percentage-based ROI)</li>
 <li>Extraction architecture</li>
 <li>Sliding-window OCR over the ticker crop</li>
 <li>Story boundary detection and stitching</li>
-<li>Deciding evaluation methodology</li>
-<li>CER / WER via <code>stringmetrics</code></li>
+</ul>
+</li>
+<li>Deciding evaluation methodology<ul>
+<li>CER / WER via stringmetrics</li>
 <li>Precision- vs. recall-based scoring for segment mode</li>
+</ul>
+</li>
 <li>Full-length mode evaluation</li>
 <li>Segment mode evaluation</li>
 <li>Full-length vs. segment mode comparison</li>
 <li>Final pipeline architecture</li>
-<li>Deployment (Streamlit)</li>
+<li>Deployment</li>
 </ul>
 <h2 id="3-video-samples-for-evaluation">3. Video Samples for Evaluation<a class="headerlink" href="#3-video-samples-for-evaluation" title="Permanent link">&para;</a></h2>
 <p>To evaluate extraction accuracy realistically, six broadcast news clips were selected across two channels and three durations:</p>
 <ul>
-<li><strong>DD India</strong> — 1 min, 2 mins, 10 mins</li>
-<li><strong>CNN News18</strong> — 1 min, 2 mins, 10 mins</li>
+<li>DD India → 1 min, 2 mins, 10 mins</li>
+<li>CNN News18 → 1 min, 2 mins, 10 mins</li>
 </ul>
-<p>Channels and durations were chosen deliberately: DD India and CNN News18 use visually different ticker styles (positioning, font, scroll speed, background contrast), and the three durations test whether extraction accuracy holds up as read length increases — a single continuous full-length read accumulates more opportunity for drift than a short clip.</p>
-<h2 id="4-extraction-architecture">4. Extraction Architecture<a class="headerlink" href="#4-extraction-architecture" title="Permanent link">&para;</a></h2>
+<p>Channels and durations were chosen deliberately: DD India and CNN News18 use visually different ticker styles (positioning, font, scroll speed, background contrast), and the three durations test whether extraction accuracy holds up as read length increases - a single continuous full-length read accumulates more opportunity for drift than a short clip.</p>
+<h2 id="4-pipeline-architecture">4. Pipeline Architecture<a class="headerlink" href="#4-pipeline-architecture" title="Permanent link">&para;</a></h2>
 <p>The pipeline reads a manually specified ticker region (left, top, width, height, as percentages of frame size) rather than attempting automatic ticker-region detection. This was a deliberate simplification: broadcast ticker position and styling vary enough across channels that manual selection, verified with a live region preview before running extraction, proved more reliable than a general-purpose detector for the channels evaluated here.</p>
 <p>Within the selected region, the pipeline uses a sliding-window OCR approach: overlapping frame samples are read via Tesseract OCR, and a story-stitching step reconstructs individual news items from the continuously scrolling text by merging overlapping OCR reads and identifying story boundaries.</p>
 <p>Two modes are available:</p>
 <ul>
-<li><strong>Full length mode</strong> — given a single start timestamp, the ticker is read continuously to the end of the clip, producing a list of stories each with a <code>start_time</code>/<code>end_time</code>.</li>
-<li><strong>Segment mode</strong> — the video is first split on scene changes (Bhattacharyya distance between frame histograms), and each resulting segment is read independently, producing per-segment extracted text plus optional per-story evaluation within that segment.</li>
+<li><strong>Full length mode</strong> → given a single start timestamp, the ticker is read continuously to the end of the clip, producing a list of stories each with a start_time/end_time.</li>
+<li><strong>Segment mode</strong> → the video is first split on scene changes (Bhattacharyya distance between frame histograms), and each resulting segment is read independently, producing per-segment extracted text plus optional per-story evaluation within that segment.</li>
 </ul>
+<p>The extraction pipeline is organized as follows:</p>
 <h2 id="5-evaluation-methodology">5. Evaluation Methodology<a class="headerlink" href="#5-evaluation-methodology" title="Permanent link">&para;</a></h2>
 <p>Extraction accuracy is measured with Character Error Rate (CER) and Word Error Rate (WER), computed against an optional ground-truth script uploaded per video. Where no script is supplied, extraction still runs but no evaluation metrics are produced.</p>
-<p><strong>Full-length mode</strong> evaluates each extracted story against its corresponding reference story directly.</p>
-<p><strong>Segment mode</strong> required a different approach. Text extraction was performed only on segments longer than 3 seconds — shorter segments yielded unreliable results due to the limited number of frames, which led to inaccurate speed estimation and poor image stitching. For per-segment story evaluation, a <strong>precision-based</strong> approach was used instead of a recall-based one: a recall-based comparison would have measured extracted text against reference stories containing characters not present within that segment's boundaries, artificially inflating CER/WER. Since segments generated via scene-change detection often contain <strong>incomplete</strong> ticker stories by construction, precision-based evaluation — scoring only what was actually extracted, against the portion of the reference it corresponds to — is the more appropriate metric.</p>
-<h2 id="6-full-length-mode-results">6. Full-Length Mode: Results<a class="headerlink" href="#6-full-length-mode-results" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Full-length mode evaluates each extracted story against its corresponding reference story directly.</li>
+<li>Segment mode required a different approach. Text extraction was performed only on segments longer than 3 seconds - shorter segments yielded unreliable results due to the limited number of frames, which led to inaccurate speed estimation and poor image stitching. For per-segment story evaluation, a precision-based approach was used instead of a recall-based one.</li>
+</ul>
+<p>A recall-based comparison would have measured extracted text against reference stories containing characters not present within that segment's boundaries, artificially inflating CER/WER. Since segments generated via scene-change detection often contain incomplete ticker stories by construction, precision-based evaluation - scoring only what was actually extracted, against the portion of the reference it corresponds to - is the more appropriate metric.</p>
+<h2 id="6-results">6. Results<a class="headerlink" href="#6-results" title="Permanent link">&para;</a></h2>
+<h4 id="full-length-mode">Full-Length Mode<a class="headerlink" href="#full-length-mode" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
@@ -634,9 +651,9 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Analysis:</strong> at 1–2 minute lengths, CNN News18 clips extract noticeably more accurately than DD India (CER ~0.035 vs. ~0.089 average). That gap narrows sharply at 10 minutes — CNN's Sample 6 (CER 0.2834) is the single worst result across all six clips, pulling CNN's channel average up to roughly match DD India's. Error rate appears to scale with clip duration for both channels, most likely from ticker drift, OCR degradation over longer sliding-window reads, or accumulated story-boundary misalignment across a long continuous read.</p>
-<h2 id="7-segment-mode-results">7. Segment Mode: Results<a class="headerlink" href="#7-segment-mode-results" title="Permanent link">&para;</a></h2>
-<p><em>Sample 4 produced no scene changes, so no segments were generated — it was evaluated using the entire 2-minute video instead (see the Full-Length Mode table above for its figures).</em></p>
+<p><strong>Analysis:</strong> at 1–2 minute lengths, CNN News18 clips extract noticeably more accurately than DD India (CER ~0.035 vs. ~0.089 average). That gap narrows sharply at 10 minutes - CNN's Sample 6 (CER 0.2834) is the single worst result across all six clips, pulling CNN's channel average up to roughly match DD India's. Error rate appears to scale with clip duration for both channels, most likely from ticker drift, OCR degradation over longer sliding-window reads, or accumulated story-boundary misalignment across a long continuous read.</p>
+<h4 id="segment-mode">Segment Mode<a class="headerlink" href="#segment-mode" title="Permanent link">&para;</a></h4>
+<p><em>Note: Sample 3 and 4 produced no scene changes, so no segments were generated - they were evaluated using the entire 1-minute and 2-minute videos respectively instead (see the Full-Length Mode table for their figures).</em></p>
 <p><strong>Sample 1</strong> — DD India, 1 min</p>
 <table>
 <thead>
@@ -655,15 +672,15 @@
 <tr>
 <td>1</td>
 <td>00:00:00</td>
-<td>00:00:08</td>
-<td>8.4</td>
+<td>00:00:09</td>
+<td>9.33</td>
 <td>3</td>
 <td>1</td>
 <td>0.0000</td>
 <td>0.0000</td>
 </tr>
 <tr>
-<td>3</td>
+<td>2</td>
 <td>00:00:09</td>
 <td>00:00:26</td>
 <td>16.8</td>
@@ -673,17 +690,17 @@
 <td>0.1111</td>
 </tr>
 <tr>
-<td>5</td>
+<td>3</td>
 <td>00:00:28</td>
 <td>00:00:38</td>
-<td>10.27</td>
-<td>3</td>
+<td>12.13</td>
+<td>4</td>
 <td>2</td>
 <td>0.0593</td>
 <td>0.1429</td>
 </tr>
 <tr>
-<td>7</td>
+<td>4</td>
 <td>00:00:40</td>
 <td>00:00:50</td>
 <td>10.27</td>
@@ -732,119 +749,42 @@
 <tr>
 <td>2</td>
 <td>00:00:04</td>
-<td>00:00:17</td>
-<td>13.07</td>
-<td>4</td>
-<td>3</td>
-<td>0.1151</td>
-<td>0.2333</td>
+<td>00:01:04</td>
+<td>59.73</td>
+<td>22</td>
+<td>8</td>
+<td>0.0829</td>
+<td>0.1739</td>
 </tr>
 <tr>
-<td>4</td>
-<td>00:00:19</td>
-<td>00:00:34</td>
-<td>14.93</td>
-<td>5</td>
 <td>3</td>
-<td>0.0887</td>
-<td>0.1939</td>
-</tr>
-<tr>
+<td>00:01:04</td>
+<td>00:01:22</td>
+<td>17.73</td>
 <td>6</td>
-<td>00:00:36</td>
-<td>00:00:50</td>
+<td>3</td>
+<td>0.0278</td>
+<td>0.1111</td>
+</tr>
+<tr>
+<td>4</td>
+<td>00:01:24</td>
+<td>00:01:38</td>
 <td>14.0</td>
 <td>5</td>
 <td>3</td>
-<td>0.2486</td>
-<td>0.4872</td>
+<td>0.0443</td>
+<td>0.1217</td>
 </tr>
 <tr>
-<td>8</td>
-<td>00:00:51</td>
-<td>00:01:04</td>
-<td>13.07</td>
-<td>4</td>
-<td>3</td>
-<td>0.0208</td>
-<td>0.1429</td>
-</tr>
-<tr>
-<td>10</td>
-<td>00:01:06</td>
-<td>00:01:22</td>
-<td>15.87</td>
 <td>5</td>
-<td>4</td>
-<td>0.0573</td>
-<td>0.1708</td>
-</tr>
-<tr>
-<td>13</td>
-<td>00:01:24</td>
-<td>00:01:36</td>
-<td>12.13</td>
-<td>4</td>
-<td>3</td>
-<td>0.0199</td>
-<td>0.0741</td>
-</tr>
-<tr>
-<td>15</td>
 <td>00:01:38</td>
-<td>00:01:47</td>
-<td>9.33</td>
-<td>3</td>
-<td>3</td>
-<td>0.0831</td>
-<td>0.2063</td>
-</tr>
-<tr>
-<td><strong>Average</strong></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><strong>0.1046</strong></td>
-<td><strong>0.2261</strong></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Sample 3</strong> — CNN News18, 1 min</p>
-<table>
-<thead>
-<tr>
-<th>SEG</th>
-<th>START</th>
-<th>END</th>
-<th>DUR</th>
-<th>JUMP</th>
-<th>STORIES</th>
-<th>FRAG CER</th>
-<th>FRAG WER</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>00:00:00</td>
-<td>00:00:27</td>
-<td>27.0</td>
-<td>8</td>
+<td>00:01:49</td>
+<td>11.2</td>
 <td>4</td>
-<td>0.0212</td>
-<td>0.1283</td>
-</tr>
-<tr>
-<td>2</td>
-<td>00:00:27</td>
-<td>00:00:31</td>
-<td>4.0</td>
-<td>1</td>
-<td>1</td>
-<td>0.0000</td>
-<td>0.0000</td>
+<td>3</td>
+<td>0.0413</td>
+<td>0.2963</td>
 </tr>
 <tr>
 <td><strong>Average</strong></td>
@@ -853,13 +793,13 @@
 <td></td>
 <td></td>
 <td></td>
-<td><strong>0.0106</strong></td>
-<td><strong>0.0642</strong></td>
+<td><strong>0.0799</strong></td>
+<td><strong>0.2006</strong></td>
 </tr>
 </tbody>
 </table>
 <p><strong>Sample 5</strong> — DD India, 10 mins</p>
-<p><em>Contains 46 segments in total; only the first 7 are shown below for brevity. The average row reflects the full segment set.</em></p>
+<p><em>Contains 32 segments in total; only the first 9 are shown below for brevity. The average row reflects the full segment set.</em></p>
 <table>
 <thead>
 <tr>
@@ -885,17 +825,17 @@
 <td>0.0000</td>
 </tr>
 <tr>
-<td>3</td>
-<td>00:00:06</td>
-<td>00:00:22</td>
-<td>15.87</td>
-<td>5</td>
 <td>2</td>
-<td>0.1988</td>
-<td>0.4423</td>
+<td>00:00:06</td>
+<td>00:00:23</td>
+<td>16.8</td>
+<td>6</td>
+<td>2</td>
+<td>0.0761</td>
+<td>0.1825</td>
 </tr>
 <tr>
-<td>5</td>
+<td>3</td>
 <td>00:00:23</td>
 <td>00:00:36</td>
 <td>13.07</td>
@@ -905,54 +845,74 @@
 <td>0.2083</td>
 </tr>
 <tr>
-<td>7</td>
-<td>00:00:38</td>
-<td>00:00:50</td>
-<td>12.13</td>
 <td>4</td>
+<td>00:00:36</td>
+<td>00:00:50</td>
+<td>14.0</td>
+<td>5</td>
 <td>2</td>
 <td>0.0846</td>
 <td>0.1666</td>
 </tr>
 <tr>
-<td>9</td>
+<td>5</td>
 <td>00:00:52</td>
-<td>00:00:59</td>
-<td>7.47</td>
-<td>2</td>
-<td>1</td>
-<td>0.1395</td>
-<td>0.1667</td>
-</tr>
-<tr>
-<td>11</td>
-<td>00:01:00</td>
-<td>00:01:13</td>
-<td>13.07</td>
-<td>4</td>
-<td>3</td>
-<td>0.0898</td>
-<td>0.3429</td>
-</tr>
-<tr>
-<td>13</td>
 <td>00:01:14</td>
-<td>00:01:24</td>
-<td>9.33</td>
-<td>3</td>
-<td>3</td>
-<td>0.0208</td>
-<td>0.1111</td>
+<td>22.4</td>
+<td>8</td>
+<td>4</td>
+<td>0.1077</td>
+<td>0.3167</td>
 </tr>
 <tr>
-<td><strong>Average (all 46 segments)</strong></td>
+<td>6</td>
+<td>00:01:14</td>
+<td>00:01:34</td>
+<td>19.6</td>
+<td>7</td>
+<td>4</td>
+<td>0.0350</td>
+<td>0.0357</td>
+</tr>
+<tr>
+<td>7</td>
+<td>00:01:34</td>
+<td>00:02:45</td>
+<td>70.93</td>
+<td>26</td>
+<td>9</td>
+<td>0.2145</td>
+<td>0.3588</td>
+</tr>
+<tr>
+<td>8</td>
+<td>00:02:45</td>
+<td>00:02:56</td>
+<td>11.2</td>
+<td>4</td>
+<td>1</td>
+<td>0.0256</td>
+<td>0.0833</td>
+</tr>
+<tr>
+<td>9</td>
+<td>00:02:57</td>
+<td>00:03:06</td>
+<td>14.93</td>
+<td>3</td>
+<td>3</td>
+<td>0.0417</td>
+<td>0.0833</td>
+</tr>
+<tr>
+<td><strong>Average (all 32 segments)</strong></td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
-<td><strong>0.1307</strong></td>
-<td><strong>0.2743</strong></td>
+<td><strong>0.1119</strong></td>
+<td><strong>0.2393</strong></td>
 </tr>
 </tbody>
 </table>
@@ -984,25 +944,15 @@
 <tr>
 <td>2</td>
 <td>00:07:54</td>
-<td>00:07:59</td>
-<td>5.6</td>
-<td>2</td>
-<td>2</td>
-<td>0.0000</td>
-<td>0.0000</td>
-</tr>
-<tr>
-<td>3</td>
-<td>00:07:59</td>
 <td>00:08:08</td>
-<td>8.4</td>
-<td>3</td>
-<td>1</td>
-<td>0.0909</td>
-<td>0.3077</td>
+<td>14.0</td>
+<td>5</td>
+<td>2</td>
+<td>0.0053</td>
+<td>0.0357</td>
 </tr>
 <tr>
-<td>4</td>
+<td>3</td>
 <td>00:08:08</td>
 <td>00:08:22</td>
 <td>14.0</td>
@@ -1012,34 +962,24 @@
 <td>0.0909</td>
 </tr>
 <tr>
-<td>7</td>
-<td>00:08:24</td>
-<td>00:08:45</td>
-<td>21.47</td>
-<td>8</td>
-<td>2</td>
-<td>0.0411</td>
-<td>0.1337</td>
-</tr>
-<tr>
-<td>8</td>
-<td>00:08:45</td>
+<td>4</td>
+<td>00:08:23</td>
 <td>00:09:46</td>
-<td>60.67</td>
-<td>22</td>
+<td>83.07</td>
+<td>31</td>
 <td>6</td>
-<td>0.0439</td>
-<td>0.2175</td>
+<td>0.0508</td>
+<td>0.2273</td>
 </tr>
 <tr>
-<td>12</td>
-<td>00:09:50</td>
+<td>5</td>
+<td>00:09:47</td>
 <td>00:09:55</td>
-<td>4.67</td>
+<td>8.4</td>
+<td>3</td>
 <td>1</td>
-<td>1</td>
-<td>0.8148</td>
-<td>1.0000</td>
+<td>0.0000</td>
+<td>0.0000</td>
 </tr>
 <tr>
 <td><strong>Average</strong></td>
@@ -1048,14 +988,13 @@
 <td></td>
 <td></td>
 <td></td>
-<td><strong>0.1683</strong></td>
-<td><strong>0.2971</strong></td>
+<td><strong>0.0487</strong></td>
+<td><strong>0.1368</strong></td>
 </tr>
 </tbody>
 </table>
-<p><em>Note: Sample 6's first segment spans nearly 8 minutes (474s) — the scene-change detector found essentially one long stable shot at the start of this clip, making segment mode behave close to full-length mode for that portion.</em></p>
-<p><strong>Analysis:</strong> across the four shorter samples (1 and 2 minute clips), fragment CER stays low (0.01–0.10), consistent with the precision-based scoring approach — each segment's extracted text is judged only against the reference text it actually corresponds to. Sample 2 is a partial outlier, with several individual segments (1, 6) showing high fragment error despite the sample's overall average staying moderate. The two 10-minute samples show visibly higher fragment averages (0.13, 0.17), and Sample 6 in particular contains one segment (segment 12, a 4.67s fragment) with a fragment CER of 0.8148 — a single short, low-confidence segment substantially skewing that sample's average upward.</p>
-<h2 id="8-full-length-vs-segment-mode-comparison">8. Full-Length vs. Segment Mode — Comparison<a class="headerlink" href="#8-full-length-vs-segment-mode-comparison" title="Permanent link">&para;</a></h2>
+<p><strong>Analysis:</strong> Across the four shorter samples (1 and 2 minute clips), fragment CER stays low (0.01–0.10), consistent with the precision-based scoring approach - each segment's extracted text is judged only against the reference text it actually corresponds to. Sample 2 is a partial outlier, with segment 1 (a short 4.67s fragment) showing a comparatively high 0.2031 CER despite the sample's overall average staying moderate. The two 10-minute samples show the highest segment-mode averages overall (Sample 5: 0.1307, Sample 6: 0.1683, per the full-length vs. segment comparison below) - within Sample 5's rows shown here, segment 7 (a 70.93s fragment) stands out at 0.2145 CER, while Sample 6's error is led by segment 1, its longest fragment at 474.13s, with a CER of 0.1751.</p>
+<h4 id="full-length-vs-segment-mode-comparison">Full-Length vs. Segment Mode - Comparison<a class="headerlink" href="#full-length-vs-segment-mode-comparison" title="Permanent link">&para;</a></h4>
 <p>The table below aggregates both modes' CER and WER across all six evaluation videos, mirroring how the extraction strategies are compared directly.</p>
 <table>
 <thead>
@@ -1084,97 +1023,69 @@
 <td>DD India</td>
 <td>2 mins</td>
 <td>0.0571</td>
-<td>0.1046</td>
+<td>0.0799</td>
 <td>0.2187</td>
-<td>0.2261</td>
+<td>0.2006</td>
 </tr>
 <tr>
 <td>Sample 3</td>
 <td>CNN News18</td>
 <td>1 min</td>
 <td>0.0328</td>
-<td>0.0106</td>
+<td>n/a</td>
 <td>0.0976</td>
-<td>0.0642</td>
+<td>n/a</td>
 </tr>
 <tr>
 <td>Sample 4</td>
 <td>CNN News18</td>
 <td>2 mins</td>
 <td>0.0379</td>
-<td>n/a — no segments</td>
+<td>n/a</td>
 <td>0.0900</td>
-<td>n/a — no segments</td>
+<td>n/a</td>
 </tr>
 <tr>
 <td>Sample 5</td>
 <td>DD India</td>
 <td>10 mins</td>
 <td>0.1536</td>
-<td>0.1307</td>
+<td>0.1119</td>
 <td>0.3234</td>
-<td>0.2743</td>
+<td>0.2393</td>
 </tr>
 <tr>
 <td>Sample 6</td>
 <td>CNN News18</td>
 <td>10 mins</td>
 <td>0.2834</td>
-<td>0.1683</td>
+<td>0.0487</td>
 <td>0.3705</td>
-<td>0.2971</td>
+<td>0.1368</td>
 </tr>
 <tr>
-<td><strong>Average</strong>*</td>
+<td><strong>Average</strong></td>
 <td></td>
 <td></td>
 <td><strong>0.1142</strong></td>
-<td><strong>0.0889</strong></td>
+<td><strong>0.0451</strong></td>
 <td><strong>0.2159</strong></td>
-<td><strong>0.1850</strong></td>
+<td><strong>0.1067</strong></td>
 </tr>
 </tbody>
 </table>
-<p><em>*Average across the five samples where segment mode produced results (excludes Sample 4).</em></p>
-<p><strong>Why segment mode tends to score lower error:</strong> segment mode shows a lower average CER/WER than full-length mode on four of five comparable samples — most visibly on the two 10-minute clips, where full-length mode's error compounds over a much longer continuous read. This is consistent with segment mode's precision-based evaluation: shorter, scene-bounded fragments give the OCR/story-assembly pipeline less room to drift or misalign story boundaries than one long continuous read does.</p>
-<p>Sample 2 is the exception — segment mode's average CER is nearly double full-length mode's (0.1046 vs. 0.0571). Its segments were also comparatively short and numerous (8 segments across 2 minutes, durations from 4.67s to 15.87s), close to the pipeline's own 3-second minimum-duration filter, which may partly explain the reduced reliability there relative to the other samples.</p>
-<p><strong>Caveat:</strong> the source data confirms segment-mode evaluation is precision-based; whether the full-length figures use the same evaluation basis isn't independently confirmed here, so the deltas above should be read as directionally informative rather than strictly like-for-like until that's verified.</p>
-<h2 id="9-pipeline-architecture">9. Pipeline Architecture<a class="headerlink" href="#9-pipeline-architecture" title="Permanent link">&para;</a></h2>
-<p>The extraction pipeline is organized as follows:</p>
-<pre><code>Video Input (upload or direct link)
-        │
-        ▼
-Manual Ticker Region Selection (percentage coordinates, live preview)
-        │
-        ▼
-   ┌─────────────┴─────────────┐
-   ▼                           ▼
-Full Length Mode          Segment Mode
-(start timestamp,         (scene-change split via
- read to end)              Bhattacharyya distance,
-   │                        each segment read
-   │                        independently)
-   ▼                           ▼
-Sliding-Window OCR (Tesseract) over ticker crop
-        │
-        ▼
-Story Stitching (merge overlapping reads, detect story boundaries)
-        │
-        ▼
-Optional Evaluation (CER/WER against uploaded ground-truth script)
-        │
-        ▼
-Results: story/segment list with timestamps, synced to video playback
-</code></pre>
-<p>The pipeline's Python modules (<code>pipeline/</code>) are called directly by the Streamlit app — there is no separate backend/API layer, since extraction runs synchronously within the same process as the UI.</p>
-<h2 id="10-deployment">10. Deployment<a class="headerlink" href="#10-deployment" title="Permanent link">&para;</a></h2>
-<p>Unlike a decoupled backend/frontend architecture, this project ships as a single Streamlit application — extraction, evaluation, and the results UI (including video playback synced to the extracted transcript) all run within one process.</p>
+<p><em>Average across the five samples where segment mode produced results (excludes Sample 3 &amp; 4). "n/a" indicates no segments were generated.</em></p>
+<p><strong>Segment mode's lower error:</strong> Segment mode shows a lower average CER/WER than full-length mode on three of the four comparable samples - most visibly on Sample 6, where segment mode's CER (0.0487) is less than a fifth of full-length mode's (0.2834). This is consistent with segment mode's precision-based evaluation: shorter, scene-bounded fragments give the OCR/story-assembly pipeline less room to drift or misalign story boundaries than one long continuous read does.</p>
+<p><strong>Sample 2 is the exception:</strong> Segment mode's average CER is higher than full-length mode's, though not dramatically (0.0799 vs. 0.0571). Its segments were also comparatively few (5 segments across 2 minutes, durations from 4.67s to [CONFIRM: 59.73s]), with segment 1's short 4.67s fragment landing close to the pipeline's own 3-second minimum-duration filter - which may partly explain the reduced reliability there relative to the other samples.</p>
+<p><strong>Caveat:</strong> The two modes are not scored on an identical basis. Segment mode uses fragment-aligned, precision-style scoring <code>(evaluate_segments)</code>, while full-length mode scores each story against its best-matching full reference line and reports the boundary-filtered average <code>(evaluate_all)</code>. The deltas above should therefore be read as directionally informative rather than strictly like-for-like.</p>
+<h2 id="7-deployment">7. Deployment<a class="headerlink" href="#7-deployment" title="Permanent link">&para;</a></h2>
+<p>Unlike a decoupled backend/frontend architecture, this project ships as a single Streamlit application - extraction, evaluation, and the results UI (including video playback synced to the extracted transcript) all run within one process. A single user runs one extraction at a time, so there's no need for shared state, a job queue, or a separate API layer - a full client-server split would only add deployment overhead here without changing what the tool does.</p>
 <p><strong>Running the app</strong></p>
 <pre><code class="language-bash">streamlit run app.py
 </code></pre>
-<p>This differs from a typical FastAPI + React split: there's no separate API server, streaming response, or client-side build step. The trade-off is simplicity of deployment against the more granular real-time streaming a decoupled architecture could offer — reasonable here since extraction on a single video completes in well under the time a user would wait regardless.</p>
-<h2 id="11-conclusion">11. Conclusion<a class="headerlink" href="#11-conclusion" title="Permanent link">&para;</a></h2>
-<p>Across six broadcast clips, segment mode's precision-based evaluation shows a lower average error rate than full-length mode's continuous read, most clearly on longer (10-minute) clips where full-length mode's error compounds over the extended read. Full-length mode remains simpler to reason about and doesn't depend on scene-change detection finding meaningful cut points — Sample 4's lack of scene changes shows that dependency directly. The choice between modes in practice likely depends on clip length and how visually static the source video is, rather than one mode being unconditionally better than the other.</p>
+<h2 id="8-conclusion">8. Conclusion<a class="headerlink" href="#8-conclusion" title="Permanent link">&para;</a></h2>
+<p>Across six broadcast clips, segment mode's precision-based evaluation shows a lower average error rate than full-length mode, most clearly on the two 10-minute clips where full-length mode's error builds up over the long continuous read. The two modes also fail differently: full-length mode's error rises steadily with clip length, while segment mode's error is usually low but occasionally spikes on a single bad segment (as with Sample 6's fragment 12, or Sample 2's short, closely-packed segments).</p>
+<p>Full-length mode stays simpler and doesn't depend on scene-change detection finding good cut points - Sample 4's lack of scene changes shows that dependency directly. In practice, segment mode looks like the better choice for shorter clips with clear scene changes, while full-length mode is more dependable for longer or visually static clips. A hybrid approach - segment mode where cuts are dense enough, full-length otherwise - would be a natural next step rather than picking one mode per video upfront.</p>
 
 
 
