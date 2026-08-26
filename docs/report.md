@@ -49,6 +49,12 @@ Two modes are available:
 
 The extraction pipeline is organized as follows:
 
+<p align="center">
+  <img src="docs/architecture.png" alt="Architecture diagram">
+  <br>
+  <em>Fig: System architecture of the proposed pipeline.</em>
+</p>
+
 ## 5. Evaluation Methodology
 
 Extraction accuracy is measured with Character Error Rate (CER) and Word Error Rate (WER), computed against an optional ground-truth script uploaded per video. Where no script is supplied, extraction still runs but no evaluation metrics are produced.
