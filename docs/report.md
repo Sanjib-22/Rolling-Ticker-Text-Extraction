@@ -49,10 +49,7 @@ Two modes are available:
 
 The extraction pipeline is organized as follows:
 
-![Architecture diagram](architecture.png)
-
-*Fig: System architecture of the proposed pipeline.*
-
+![Architecture diagram](../arch.png)
 
 ## 5. Evaluation Methodology
 
