@@ -19,7 +19,6 @@ The project requires **Python 3.12**. Once your Python environment is ready, ins
 ```bash
 python -m venv venv
 .\venv\Scripts\Activate.ps1    # Windows (PowerShell)
-# source venv/bin/activate     # macOS/Linux
 pip install -r requirements.txt
 ```
 
