@@ -8,21 +8,7 @@
 
 ## Project Demonstration
 
-> **P.S. Additional notes not mentioned in the video:**
->
-> - Ticker region is set manually as percentage coordinates (left/top/width/height), not auto-detected.
-> - Text extraction uses Tesseract OCR via a sliding-window read over the ticker crop.
-> - Segment mode splits the video on scene changes (Bhattacharyya distance) before reading each segment independently; segments shorter than 3 seconds are skipped as unreliable.
-
-<iframe width="100%" style="aspect-ratio:16/9;" src="https://www.youtube.com/watch?v=LZWPeqpmIco" title="Rolling Ticker — project walkthrough" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<!--
-  Replace YOUR_VIDEO_ID_HERE above once the walkthrough is uploaded:
-  1. Upload the screen recording to YouTube as Unlisted (viewable by anyone
-     with the link, without appearing in search/your channel listing).
-  2. Copy the ID from the URL: https://youtu.be/THIS_PART
-  3. Paste it in place of YOUR_VIDEO_ID_HERE above.
--->
+<iframe width="100%" style="aspect-ratio:16/9;" src="https://youtu.be/83neoKqOx9A" title="Rolling Ticker — project walkthrough" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ---
 

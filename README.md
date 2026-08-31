@@ -4,11 +4,11 @@
 
 This repository contains an end-to-end pipeline for reading scrolling news-ticker text out of broadcast video — manual ticker-region selection, two extraction modes (full-length and scene-segmented), OCR via Tesseract, accuracy evaluation against a ground-truth script, and a Streamlit web interface with synced video/transcript playback.
 
-[Progress_Report_Final.pdf](docs/Rolling_Ticker_Extraction_Report.pdf) 
+[Progress_Report_Final.pdf](docs/Rolling_Ticker_Extraction_Report.pdf) - Progress Report of this project.
 
-[Progress_Report_Notion](https://app.notion.com/p/Rolling-Ticker-Extraction-from-Broadcast-Video-96928754c2ce465db14f204e500944f4?source=copy_link) 
+[Progress_Report_Notion](https://app.notion.com/p/Rolling-Ticker-Extraction-from-Broadcast-Video-96928754c2ce465db14f204e500944f4?source=copy_link) - Notion Report link.
 
-[Github Page for this Project](https://sanjib-22.github.io/Rolling-Ticker-Text-Extraction/)
+[Github Page](https://sanjib-22.github.io/Rolling-Ticker-Text-Extraction/) - Github page for this project.
 
 ---
 
