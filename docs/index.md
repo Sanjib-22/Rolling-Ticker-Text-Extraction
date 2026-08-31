@@ -8,7 +8,7 @@
 
 ## Project Demonstration
 
-<iframe width="100%" style="aspect-ratio:16/9;" src="https://youtu.be/83neoKqOx9A" title="Rolling Ticker — project walkthrough" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="800" height="450" src="https://www.youtube.com/embed/83neoKqOx9A?si=lFKMFrv3cYMPVO84" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 
