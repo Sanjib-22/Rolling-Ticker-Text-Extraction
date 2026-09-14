@@ -17,8 +17,8 @@ theme:
     accent: amber
 
 nav:
-  - Home: index.md
-  - Detailed Explanation: report.md
+  - Project Report: index.md
+  - Setup & Installation Guide: Setup_Guide.md
 
 markdown_extensions:
   - admonition
@@ -26,3 +26,14 @@ markdown_extensions:
   - fenced_code
   - toc:
       permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
