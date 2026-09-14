@@ -72,27 +72,26 @@ streamlit run app.py
 
 ```
 rolling-ticker/
-├── app.py                 Streamlit app — entry point
-├── requirements.txt
-├── pipeline/               Core extraction pipeline
-│   ├── video.py             Video frame access
-│   ├── video_segmentor.py   Scene-change based segmentation
-│   ├── frameops.py          Frame preprocessing
-│   ├── tesseract.py         OCR interface + Tesseract implementation
-│   ├── slidingreader.py     Ticker reading, story assembly
-│   ├── stringmetrics.py     Text similarity helpers
-│   ├── evaluator.py         CER/WER evaluation against ground truth
-│   └── helpers.py           Generic no-domain helpers
-├── scripts/                 Standalone CLI tools
-│   ├── easyrun.py             Full-length CLI run
-│   ├── run_on_segments.py     Segment-mode CLI run
-│   ├── get_coordinates.py     Find ticker ROI coordinates
-│   ├── make_test_video.py     Synthetic test clip
-│   └── broadcast_summarizer.py
+├── app.py                          # Streamlit app — entry point
+├── requirements.txt                # Required libraries to be installed before starting the system
+├── pipeline/                       # Core extraction pipeline
+│   ├── video.py                    # Video frame access
+│   ├── video_segmentor.py          # Scene-change based segmentation
+│   ├── frameops.py                 # Frame preprocessing
+│   ├── tesseract.py                # OCR interface + Tesseract implementation
+│   ├── slidingreader.py            # Ticker reading, story assembly
+│   ├── stringmetrics.py            # Text similarity helpers
+│   ├── evaluator.py                # CER/WER evaluation against ground truth
+│   └── helpers.py                  # Generic no-domain helpers
+├── scripts/                        # Standalone CLI tools
+│   ├── easyrun.py                  # Full-length CLI run
+│   ├── run_on_segments.py          # Segment-mode CLI run
+│   ├── get_coordinates.py          # Find ticker ROI coordinates
+│   ├── make_test_video.py          # Synthetic test clip
+│   └── broadcast_summarizer.py     # Summarizes all sample stories in a text file with Timestamps and Evaluation results
 ├── docs/
-│   └── sample_coordinates.txt   Example ticker ROI values by channel
-├── samples/                gitignored — runtime output, created automatically
-├── License                 MIT License
+│   └── sample_coordinates.txt      # Example ticker ROI values by channel
+├── License                         
 └── README.md
 ```
 
