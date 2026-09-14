@@ -267,7 +267,7 @@ xychart-beta
 xychart-beta
     title "Average Character Error Rates (CERs) of Samples ran on Segmentize Mode"
     x-axis ["Sample 1", "Sample 2", "Sample 5", "Sample 6"]
-    y-axis "CER (%)" 0 --> 40
+    y-axis "CER (%)" 0 --> 20
     bar [3.01, 7.99, 11.19, 4.87]
 ```
 
