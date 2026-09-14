@@ -254,7 +254,7 @@ The table below aggregates both modes' CER and WER across all six evaluation vid
 The two charts below plot the CERs of both full-length mode and segmentize mode using a total of six samples and four samples respectively.
 
 ```mermaid
-%%{init: { "themeVariables": { "xyChart": { "plotColorPalette": "#3F51B5" } } } }%%
+%%{init: { "themeVariables": { "xyChart": { "plotColorPalette": "#e44644" } } } }%%
 xychart-beta
     title "Average Character Error Rates (CERs) of Samples ran on Full-Story Mode"
     x-axis ["Sample 1", "Sample 2", "Sample 3", "Sample 4", "Sample 5", "Sample 6"]
@@ -263,7 +263,7 @@ xychart-beta
 ```
 
 ```mermaid
-%%{init: { "themeVariables": { "xyChart": { "plotColorPalette": "#3F51B5" } } } }%%
+%%{init: { "themeVariables": { "xyChart": { "plotColorPalette": "#e44644" } } } }%%
 xychart-beta
     title "Average Character Error Rates (CERs) of Samples ran on Segmentize Mode"
     x-axis ["Sample 1", "Sample 2", "Sample 5", "Sample 6"]
