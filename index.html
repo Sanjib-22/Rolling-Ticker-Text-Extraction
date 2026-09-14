@@ -1264,7 +1264,7 @@ xychart-beta
 xychart-beta
     title "Average Character Error Rates (CERs) of Samples ran on Segmentize Mode"
     x-axis ["Sample 1", "Sample 2", "Sample 5", "Sample 6"]
-    y-axis "CER (%)" 0 --&gt; 40
+    y-axis "CER (%)" 0 --&gt; 20
     bar [3.01, 7.99, 11.19, 4.87]</code></pre>
 <p><strong>Segment mode's lower error:</strong> Segment mode shows a lower average CER/WER than full-length mode on three of the four comparable samples - most visibly on Sample 6, where segment mode's CER (0.0487) is less than a fifth of full-length mode's (0.2834). This is consistent with segment mode's precision-based evaluation: shorter, scene-bounded fragments give the OCR/story-assembly pipeline less room to drift or misalign story boundaries than one long continuous read does.</p>
 <p><strong>Sample 2 is the exception:</strong> Segment mode's average CER is higher than full-length mode's, though not dramatically (0.0799 vs. 0.0571). Its segments were also comparatively few (5 segments across 2 minutes, durations from 4.67s to 59.73s), with segment 1's short 4.67s fragment landing close to the pipeline's own 3-second minimum-duration filter - which may partly explain the reduced reliability there relative to the other samples.</p>
