@@ -9,8 +9,8 @@ _- [Sanjib Das](https://www.linkedin.com/in/sanjib-das-6226342a9/)_
 
 *Developed during an internship at EICT IIT Guwahati.*
 
-**[Go to Setup and Installation Guide](Setup_Guide.md)**
-**[Go to the Project GitHub Repository](https://github.com/Sanjib-22/Rolling-Ticker-Text-Extraction)**
+**[Go to Setup and Installation Guide](Setup_Guide.md)**<br>
+**[Go to the Project GitHub Repository](https://github.com/Sanjib-22/Rolling-Ticker-Text-Extraction)**<br>
 **[Get the PDF version of this Report](Rolling_Ticker_Extraction_Report.pdf)**
 
 ## 1. Introduction
