@@ -12,7 +12,7 @@
       
       
       
-        <link rel="next" href="report/">
+        <link rel="next" href="Setup_Guide/">
       
       
         
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Project Report
             
           </span>
         </div>
@@ -199,7 +199,7 @@
   
     
   
-  Home
+  Project Report
 
       </a>
     </li>
@@ -212,13 +212,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="report/" class="md-tabs__link">
+      <a href="Setup_Guide/" class="md-tabs__link">
         
   
   
     
   
-  Detailed Explanation
+  Setup & Installation Guide
 
       </a>
     </li>
@@ -295,7 +295,7 @@
   <span class="md-ellipsis">
     
   
-    Home
+    Project Report
   
 
     
@@ -313,7 +313,7 @@
   <span class="md-ellipsis">
     
   
-    Home
+    Project Report
   
 
     
@@ -339,6 +339,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#project-guidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project Guidance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#project-demonstration" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -350,10 +361,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#environment-setup" class="md-nav__link">
+  <a href="#1-introduction" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Environment Setup
+        1. Introduction
       
     </span>
   </a>
@@ -361,10 +372,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sample-videos-ticker-coordinates" class="md-nav__link">
+  <a href="#2-project-progress-list" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sample Videos &amp; Ticker Coordinates
+        2. Project Progress List
       
     </span>
   </a>
@@ -372,10 +383,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#running-via-cli" class="md-nav__link">
+  <a href="#3-video-samples-for-evaluation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Running via CLI
+        3. Video Samples for Evaluation
       
     </span>
   </a>
@@ -383,10 +394,160 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#web-app-deployment" class="md-nav__link">
+  <a href="#4-pipeline-architecture" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Web App Deployment
+        4. Pipeline Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Pipeline Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ticker-region-conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ticker Region Conversion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sliding-window-ocr-frame-preprocessing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sliding-Window OCR &amp; Frame Preprocessing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scene-change-detection-segment-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scene-Change Detection (Segment Mode)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ticker-speed-story-reconstruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ticker Speed &amp; Story Reconstruction
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-evaluation-methodology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Evaluation Methodology
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Evaluation Methodology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#string-matching-primitives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        String-Matching Primitives
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reported-accuracy-metrics-cer-wer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reported Accuracy Metrics: CER &amp; WER
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Results
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#full-length-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full-Length Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#segment-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Segment Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-length-vs-segment-mode-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full-Length vs. Segment Mode - Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Deployment
       
     </span>
   </a>
@@ -394,32 +555,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#project-structure" class="md-nav__link">
+  <a href="#8-conclusion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Project Structure
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#author" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Author
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#license" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        License
+        8. Conclusion
       
     </span>
   </a>
@@ -441,14 +580,14 @@
   
   
     <li class="md-nav__item">
-      <a href="report/" class="md-nav__link">
+      <a href="Setup_Guide/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Detailed Explanation
+    Setup & Installation Guide
   
 
     
@@ -482,83 +621,658 @@
 
 
 <h1 id="rolling-ticker-extraction-from-broadcast-video">Rolling Ticker Extraction from Broadcast Video<a class="headerlink" href="#rolling-ticker-extraction-from-broadcast-video" title="Permanent link">&para;</a></h1>
-<p><em>This project was developed during an internship at EICT IIT Guwahati under the guidance of Prithwijit Guha sir.</em></p>
-<p><strong><a href="report/">Read the Full Project Report Here</a></strong> - Browse the detailed extraction methodology, evaluation results, and pipeline architecture.</p>
-<p><strong><a href="https://github.com/Sanjib-22/Rolling-Ticker-Text-Extraction">View Source Code on GitHub</a></strong> - Access the complete repository, pipeline modules, and CLI scripts.</p>
+<p><em>- <a href="https://www.linkedin.com/in/sanjib-das-6226342a9/">Sanjib Das</a></em></p>
+<h3 id="project-guidance">Project Guidance<a class="headerlink" href="#project-guidance" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Mentors:</strong> Parth Dhola Sir and Amaan Irfan Sir</li>
+<li><strong>Faculty Advisor:</strong> Prithwijit Guha Sir</li>
+</ul>
+<p><em>Developed during an internship at EICT IIT Guwahati.</em></p>
+<p><strong><a href="Setup_Guide/">Go to Setup and Installation Guide</a></strong>
+<strong><a href="https://github.com/Sanjib-22/Rolling-Ticker-Text-Extraction">Go to the Project GitHub Repository</a></strong>
+<strong><a href="Rolling_Ticker_Extraction_Report.pdf">Get the PDF version of this Report</a></strong></p>
 <h2 id="project-demonstration">Project Demonstration<a class="headerlink" href="#project-demonstration" title="Permanent link">&para;</a></h2>
-<iframe width="800" height="450" src="https://www.youtube.com/embed/83neoKqOx9A?si=lFKMFrv3cYMPVO84" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div align="center">
+  <iframe width="800" height="450" src="https://www.youtube.com/embed/83neoKqOx9A?si=lFKMFrv3cYMPVO84" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
-<hr />
-<h2 id="environment-setup">Environment Setup<a class="headerlink" href="#environment-setup" title="Permanent link">&para;</a></h2>
-<p>The project requires <strong>Python 3.12</strong>. Once your Python environment is ready, install the required dependencies:</p>
-<pre><code class="language-bash">python -m venv venv
-.\venv\Scripts\Activate.ps1    # Windows (PowerShell)
-pip install -r requirements.txt
-</code></pre>
-<p>Tesseract OCR must also be installed and available on your system <code>PATH</code> — the pipeline shells out to it directly, it isn't installed via pip:</p>
-<pre><code class="language-bash"># Windows
-https://github.com/UB-Mannheim/tesseract/wiki
-</code></pre>
-<hr />
-<h2 id="sample-videos-ticker-coordinates">Sample Videos &amp; Ticker Coordinates<a class="headerlink" href="#sample-videos-ticker-coordinates" title="Permanent link">&para;</a></h2>
-<p>To find the ticker's exact region (as percentages of frame size) for a given channel, run:</p>
-<pre><code class="language-bash">.\venv\Scripts\Activate.ps1
-python scripts/get_coordinates.py samples/your_video.mp4
-</code></pre>
-<p>Reference coordinates for known channels are kept in <a href="https://github.com/PLACEHOLDER_USER/PLACEHOLDER_REPO/blob/main/docs/sample_coordinates.txt"><code>docs/sample_coordinates.txt</code></a> in the repository. To generate a synthetic test clip instead of using a real broadcast video:</p>
-<pre><code class="language-bash">python scripts/make_test_video.py
-</code></pre>
-<p>Videos and generated master word lists live under <code>samples/</code>, created automatically on first run.</p>
-<hr />
-<h2 id="running-via-cli">Running via CLI<a class="headerlink" href="#running-via-cli" title="Permanent link">&para;</a></h2>
-<p>The core extraction logic can be run directly, outside the web app:</p>
-<ol>
-<li><strong>Full length mode</strong> — reads the ticker from a start timestamp to the end of the clip:
-   <code>python scripts/easyrun.py samples/sample_3.mp4</code></li>
-<li><strong>Segment mode</strong> — splits the video on scene changes first, then reads each segment independently:
-   <code>python scripts/run_on_segments.py samples/sample_3.mp4</code></li>
-</ol>
-<p><em>Note: extracted text, evaluation metrics, and the accumulated master word list are saved under <code>samples/master_files/</code> during these runs.</em></p>
-<hr />
-<h2 id="web-app-deployment">Web App Deployment<a class="headerlink" href="#web-app-deployment" title="Permanent link">&para;</a></h2>
-<p>The project includes a Streamlit web app to run extraction interactively, preview the ticker region, and watch results synced to video playback. <strong>Make sure to activate the necessary Python environment before running this</strong>.</p>
-<p><strong>Start the app</strong></p>
-<pre><code class="language-bash">.\venv\Scripts\Activate.ps1
-streamlit run app.py
-</code></pre>
-<blockquote>
-<p>Always run from the project root — a few paths (<code>samples/</code>, <code>ocr/TesseractOCR/tmp/</code>) resolve relative to the current working directory, not the file's location.</p>
-</blockquote>
-<hr />
-<h2 id="project-structure">Project Structure<a class="headerlink" href="#project-structure" title="Permanent link">&para;</a></h2>
-<pre><code>rolling-ticker/
-├── app.py                 Streamlit app — entry point
-├── requirements.txt
-├── pipeline/               Core extraction pipeline
-│   ├── video.py             Video frame access
-│   ├── video_segmentor.py   Scene-change based segmentation
-│   ├── frameops.py          Frame preprocessing
-│   ├── tesseract.py         OCR interface + Tesseract implementation
-│   ├── slidingreader.py     Ticker reading, story assembly
-│   ├── stringmetrics.py     Text similarity helpers
-│   ├── evaluator.py         CER/WER evaluation against ground truth
-│   └── helpers.py           Generic no-domain helpers
-├── scripts/                 Standalone CLI tools
-│   ├── easyrun.py             Full-length CLI run
-│   ├── run_on_segments.py     Segment-mode CLI run
-│   ├── get_coordinates.py     Find ticker ROI coordinates
-│   ├── make_test_video.py     Synthetic test clip
-│   └── broadcast_summarizer.py
-├── docs/
-│   └── sample_coordinates.txt   Example ticker ROI values by channel
-├── samples/                gitignored — runtime output, created automatically
-├── License                 MIT License
-└── README.md
-</code></pre>
-<h2 id="author">Author<a class="headerlink" href="#author" title="Permanent link">&para;</a></h2>
-<p><a href="https://github.com/Sanjib-22">Sanjib Das</a></p>
-<h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
-<p>MIT License</p>
+<h2 id="1-introduction">1. Introduction<a class="headerlink" href="#1-introduction" title="Permanent link">&para;</a></h2>
+<p>Extracting scrolling news-ticker text from broadcast video presents its own set of challenges distinct from subtitle or speech transcription. Ticker text is small, often low-contrast against a moving or brightly colored background band, scrolls continuously rather than appearing as discrete captions, and frequently overlaps with channel branding, secondary tickers, or on-screen graphics.</p>
+<p>This project builds a ticker-extraction pipeline for broadcast news video, using manual ticker-region selection, a sliding-window OCR approach, and story-boundary stitching to reconstruct individual news items from the continuously scrolling text. Two extraction strategies are evaluated — a full-length read from a fixed start timestamp to the end of the clip, and a segment mode that first splits the video on scene changes before reading each segment independently — and both are scored against ground-truth scripts using Character Error Rate (CER) and Word Error Rate (WER).</p>
+<p>This report documents the extraction methodology, the mathematical operations underlying each pipeline stage, the evaluation approach for each mode, the full results across six broadcast clips spanning two channels and three clip lengths, and a direct comparison of the two modes' accuracy.</p>
+<p><br></p>
+<h2 id="2-project-progress-list">2. Project Progress List<a class="headerlink" href="#2-project-progress-list" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Preparing broadcast clips for evaluation<ul>
+<li>Sample selection across channels and durations</li>
+<li>Ground-truth script preparation</li>
+</ul>
+</li>
+<li>Ticker-region selection<ul>
+<li>Manual coordinate specification (percentage-based ROI)</li>
+<li>Extraction architecture</li>
+<li>Sliding-window OCR over the ticker crop</li>
+<li>Story boundary detection and stitching</li>
+</ul>
+</li>
+<li>Deciding evaluation methodology<ul>
+<li>CER / WER via stringmetrics</li>
+<li>Precision- vs. recall-based scoring for segment mode</li>
+</ul>
+</li>
+<li>Full-length mode evaluation</li>
+<li>Segment mode evaluation</li>
+<li>Full-length vs. segment mode comparison</li>
+<li>Final pipeline architecture</li>
+<li>Deployment</li>
+</ul>
+<p><br></p>
+<h2 id="3-video-samples-for-evaluation">3. Video Samples for Evaluation<a class="headerlink" href="#3-video-samples-for-evaluation" title="Permanent link">&para;</a></h2>
+<p>To evaluate extraction accuracy realistically, six broadcast news clips were selected across two channels and three durations:</p>
+<ul>
+<li>DD India → 1 min, 2 mins, 10 mins</li>
+<li>CNN News18 → 1 min, 2 mins, 10 mins</li>
+</ul>
+<p>Channels and durations were chosen deliberately: DD India and CNN News18 use visually different ticker styles (positioning, font, scroll speed, background contrast), and the three durations test whether extraction accuracy holds up as read length increases — a single continuous full-length read accumulates more opportunity for drift than a short clip.</p>
+<p><br></p>
+<h2 id="4-pipeline-architecture">4. Pipeline Architecture<a class="headerlink" href="#4-pipeline-architecture" title="Permanent link">&para;</a></h2>
+<p>The pipeline reads a manually specified ticker region (left, top, width, height, as percentages of frame size) rather than attempting automatic ticker-region detection. This was a deliberate simplification: broadcast ticker position and styling vary enough across channels that manual selection, verified with a live region preview before running extraction, proved more reliable than a general-purpose detector for the channels evaluated here.</p>
+<h3 id="ticker-region-conversion">Ticker Region Conversion<a class="headerlink" href="#ticker-region-conversion" title="Permanent link">&para;</a></h3>
+<p>The normalized region — picked once per channel as percentages of frame width/height — is converted to pixel coordinates for a frame of width <span class="arithmatex">\(W\)</span> and height <span class="arithmatex">\(H\)</span> before every crop:</p>
+<div class="arithmatex">\[ x_p = xW, \qquad y_p = yH, \qquad w_p = wW, \qquad h_p = hH \]</div>
+<h3 id="sliding-window-ocr-frame-preprocessing">Sliding-Window OCR &amp; Frame Preprocessing<a class="headerlink" href="#sliding-window-ocr-frame-preprocessing" title="Permanent link">&para;</a></h3>
+<p>Within the selected region, the pipeline uses a sliding-window OCR approach: overlapping frame samples are read via Tesseract OCR, and a story-stitching step reconstructs individual news items from the continuously scrolling text by merging overlapping OCR reads and identifying story boundaries.</p>
+<p>Before a crop reaches Tesseract, it is optionally gamma-corrected to boost contrast between the ticker text and its background band:</p>
+<div class="arithmatex">\[ I_{\text{out}} = I_{\text{in}}^{1/\gamma} \]</div>
+<div class="highlight"><pre><span></span><code><span class="c1"># pipeline/tesseract.py — applied before every OCR read</span>
+<span class="k">if</span> <span class="n">requests</span><span class="p">(</span><span class="s1">&#39;gamma_correct&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_preprocesses</span><span class="p">):</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">gamma_to_intensity</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">_preprocesses</span><span class="p">)</span>
+
+<span class="n">image</span> <span class="o">=</span> <span class="n">hist_adjust</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">_preprocesses</span><span class="p">)</span>
+</code></pre></div>
+<p>Two modes are available for reading the ticker once the region and preprocessing are fixed:</p>
+<ul>
+<li><strong>Full length mode</strong> → given a single start timestamp, the ticker is read continuously to the end of the clip, producing a list of stories each with a start_time/end_time.</li>
+<li><strong>Segment mode</strong> → the video is first split on scene changes, and each resulting segment is read independently, producing per-segment extracted text plus optional per-story evaluation within that segment.</li>
+</ul>
+<h3 id="scene-change-detection-segment-mode">Scene-Change Detection (Segment Mode)<a class="headerlink" href="#scene-change-detection-segment-mode" title="Permanent link">&para;</a></h3>
+<p>Segment mode compares consecutive sampled frames' colour histograms — each normalized by total pixel count — to decide where one scene ends and the next begins:</p>
+<div class="arithmatex">\[ H(i) = \frac{n_i}{\sum_j n_j} \]</div>
+<p>The implementation supports four histogram-comparison methods; <strong>Bhattacharyya distance</strong> is the one used for the documented segment-mode results, with the others available as alternatives:</p>
+<div class="arithmatex">\[ BC(H_1, H_2) = \sum_i \sqrt{H_1(i)\,H_2(i)} \]</div>
+<div class="arithmatex">\[ D_B(H_1, H_2) = -\ln\big(\max(BC(H_1, H_2),\ 10^{-10})\big) \]</div>
+<div class="highlight"><pre><span></span><code><span class="c1"># pipeline/video_segmentor.py</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calc_bhattacharyya_distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hist1</span><span class="p">,</span> <span class="n">hist2</span><span class="p">):</span>
+    <span class="n">bc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calc_bhattacharyya</span><span class="p">(</span><span class="n">hist1</span><span class="p">,</span> <span class="n">hist2</span><span class="p">)</span>
+    <span class="n">bc</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">bc</span><span class="p">,</span> <span class="mf">1e-10</span><span class="p">)</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">bc</span><span class="p">)</span>
+</code></pre></div>
+<p><em>Alternative histogram-comparison methods implemented in the same segmentor, not used for the reported results:</em></p>
+<div class="arithmatex">\[ D_{\chi^2}(H_1, H_2) = \frac{1}{2}\sum_i \frac{\big(H_1(i)-H_2(i)\big)^2}{H_1(i)+H_2(i)+\varepsilon} \]</div>
+<div class="arithmatex">\[ \rho = \frac{\sum_i \big(H_1(i)-\bar H_1\big)\big(H_2(i)-\bar H_2\big)}{\sqrt{\sum_i \big(H_1(i)-\bar H_1\big)^2 \sum_i \big(H_2(i)-\bar H_2\big)^2}} \]</div>
+<h3 id="ticker-speed-story-reconstruction">Ticker Speed &amp; Story Reconstruction<a class="headerlink" href="#ticker-speed-story-reconstruction" title="Permanent link">&para;</a></h3>
+<p>To reconstruct a single continuous "long text" out of many overlapping sliding-window reads, the pipeline estimates how fast the ticker scrolls in pixels/frame by matching the same word across consecutive sampled frames:</p>
+<div class="arithmatex">\[ v = \frac{x_t - x_{t+\Delta t}}{\Delta f} \]</div>
+<div class="highlight"><pre><span></span><code><span class="c1"># pipeline/slidingreader.py — matched word pairs within configured bounds</span>
+<span class="n">pixel_diff</span> <span class="o">=</span> <span class="n">word1</span><span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">word2</span><span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">]</span>
+<span class="n">estimate</span> <span class="o">=</span> <span class="n">pixel_diff</span> <span class="o">/</span> <span class="n">frame_diff</span>
+</code></pre></div>
+<p>Every detected word is then mapped onto a shared long-text coordinate using its own frame number <span class="arithmatex">\(f\)</span> and the estimated speed <span class="arithmatex">\(v\)</span>, which is what lets overlapping reads from different frames be merged and clustered into single words before story boundaries are found:</p>
+<div class="arithmatex">\[ x_{\text{long}} = x + v f \]</div>
+<p>The extraction pipeline is organized as follows:</p>
+<p><img alt="Architecture diagram" src="arch.png" /></p>
+<p><br></p>
+<h2 id="5-evaluation-methodology">5. Evaluation Methodology<a class="headerlink" href="#5-evaluation-methodology" title="Permanent link">&para;</a></h2>
+<p>Extraction accuracy is measured with Character Error Rate (CER) and Word Error Rate (WER), computed against an optional ground-truth script uploaded per video. Where no script is supplied, extraction still runs but no evaluation metrics are produced.</p>
+<ul>
+<li>Full-length mode evaluates each extracted story against its corresponding reference story directly.</li>
+<li>Segment mode required a different approach. Text extraction was performed only on segments longer than 3 seconds — shorter segments yielded unreliable results due to the limited number of frames, which led to inaccurate speed estimation and poor image stitching. For per-segment story evaluation, a precision-based approach was used instead of a recall-based one.</li>
+</ul>
+<p>A recall-based comparison would have measured extracted text against reference stories containing characters not present within that segment's boundaries, artificially inflating CER/WER. Since segments generated via scene-change detection often contain incomplete ticker stories by construction, precision-based evaluation — scoring only what was actually extracted, against the portion of the reference it corresponds to — is the more appropriate metric.</p>
+<h3 id="string-matching-primitives">String-Matching Primitives<a class="headerlink" href="#string-matching-primitives" title="Permanent link">&para;</a></h3>
+<p>Story-to-reference matching and fragment alignment are both built on a standard edit-distance dynamic-programming recurrence:</p>
+<div class="arithmatex">\[ D(i,j) = \min\big\{\,D(i-1,j)+1,\ D(i,j-1)+1,\ D(i-1,j-1)+[x_i \neq y_j]\,\big\} \]</div>
+<p>From this distance, the pipeline's string-metric utility derives an error rate, its complementary accuracy, and a length-normalized similarity score used when aligning candidate matches:</p>
+<div class="arithmatex">\[ ER = \frac{D(s_1, s_2)}{|s_2|} \qquad\qquad A = 1 - ER \qquad\qquad S = 1 - \frac{D(s_1, s_2)}{\max(|s_1|, |s_2|)} \]</div>
+<h3 id="reported-accuracy-metrics-cer-wer">Reported Accuracy Metrics: CER &amp; WER<a class="headerlink" href="#reported-accuracy-metrics-cer-wer" title="Permanent link">&para;</a></h3>
+<p>The headline numbers in the results below are Character Error Rate and Word Error Rate — substitutions, deletions, and insertions normalized by the length of the reference:</p>
+<div class="arithmatex">\[ CER = \frac{S_c + D_c + I_c}{N_c} \qquad\qquad\qquad WER = \frac{S_w + D_w + I_w}{N_w} \]</div>
+<div class="highlight"><pre><span></span><code><span class="c1"># pipeline/evaluator.py — evaluate_story()</span>
+<span class="n">cer_score</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">cer</span><span class="p">(</span><span class="n">ref_clean</span><span class="p">,</span> <span class="n">ext_clean</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">wer_score</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">wer</span><span class="p">(</span><span class="n">ref_clean</span><span class="p">,</span> <span class="n">ext_clean</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="6-results">6. Results<a class="headerlink" href="#6-results" title="Permanent link">&para;</a></h2>
+<h4 id="full-length-mode">Full-Length Mode<a class="headerlink" href="#full-length-mode" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Sample</th>
+<th>Channel</th>
+<th>Duration</th>
+<th>Filtered CER</th>
+<th>Filtered WER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sample 1</td>
+<td>DD India</td>
+<td>1 min</td>
+<td>0.1202</td>
+<td>0.1949</td>
+</tr>
+<tr>
+<td>Sample 2</td>
+<td>DD India</td>
+<td>2 mins</td>
+<td>0.0571</td>
+<td>0.2187</td>
+</tr>
+<tr>
+<td>Sample 3</td>
+<td>CNN News18</td>
+<td>1 min</td>
+<td>0.0328</td>
+<td>0.0976</td>
+</tr>
+<tr>
+<td>Sample 4</td>
+<td>CNN News18</td>
+<td>2 mins</td>
+<td>0.0379</td>
+<td>0.0900</td>
+</tr>
+<tr>
+<td>Sample 5</td>
+<td>DD India</td>
+<td>10 mins</td>
+<td>0.1536</td>
+<td>0.3234</td>
+</tr>
+<tr>
+<td>Sample 6</td>
+<td>CNN News18</td>
+<td>10 mins</td>
+<td>0.2834</td>
+<td>0.3705</td>
+</tr>
+<tr>
+<td><strong>Average (overall)</strong></td>
+<td></td>
+<td></td>
+<td><strong>0.1142</strong></td>
+<td><strong>0.2159</strong></td>
+</tr>
+<tr>
+<td><strong>Average — DD India</strong></td>
+<td></td>
+<td></td>
+<td><strong>0.1103</strong></td>
+<td><strong>0.2457</strong></td>
+</tr>
+<tr>
+<td><strong>Average — CNN News18</strong></td>
+<td></td>
+<td></td>
+<td><strong>0.1180</strong></td>
+<td><strong>0.1860</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Analysis:</strong> at 1–2 minute lengths, CNN News18 clips extract noticeably more accurately than DD India (CER ~0.035 vs. ~0.089 average). That gap narrows sharply at 10 minutes - CNN's Sample 6 (CER 0.2834) is the single worst result across all six clips, pulling CNN's channel average up to roughly match DD India's. Error rate appears to scale with clip duration for both channels, most likely from ticker drift, OCR degradation over longer sliding-window reads, or accumulated story-boundary misalignment across a long continuous read.</p>
+<h4 id="segment-mode">Segment Mode<a class="headerlink" href="#segment-mode" title="Permanent link">&para;</a></h4>
+<p><em>Note: Sample 3 and 4 produced no scene changes, so no segments were generated - they were evaluated using the entire 1-minute and 2-minute videos respectively instead (see the Full-Length Mode table for their figures).</em></p>
+<p><strong>Sample 1</strong> — DD India, 1 min</p>
+<table>
+<thead>
+<tr>
+<th>SEG</th>
+<th>START</th>
+<th>END</th>
+<th>DUR</th>
+<th>JUMP</th>
+<th>STORIES</th>
+<th>FRAG CER</th>
+<th>FRAG WER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>00:00:00</td>
+<td>00:00:09</td>
+<td>9.33</td>
+<td>3</td>
+<td>1</td>
+<td>0.0000</td>
+<td>0.0000</td>
+</tr>
+<tr>
+<td>2</td>
+<td>00:00:09</td>
+<td>00:00:26</td>
+<td>16.8</td>
+<td>6</td>
+<td>3</td>
+<td>0.0611</td>
+<td>0.1111</td>
+</tr>
+<tr>
+<td>3</td>
+<td>00:00:28</td>
+<td>00:00:38</td>
+<td>12.13</td>
+<td>4</td>
+<td>2</td>
+<td>0.0593</td>
+<td>0.1429</td>
+</tr>
+<tr>
+<td>4</td>
+<td>00:00:40</td>
+<td>00:00:50</td>
+<td>10.27</td>
+<td>3</td>
+<td>2</td>
+<td>0.0000</td>
+<td>0.0000</td>
+</tr>
+<tr>
+<td><strong>Average</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>0.0301</strong></td>
+<td><strong>0.0635</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sample 2</strong> — DD India, 2 mins</p>
+<table>
+<thead>
+<tr>
+<th>SEG</th>
+<th>START</th>
+<th>END</th>
+<th>DUR</th>
+<th>JUMP</th>
+<th>STORIES</th>
+<th>FRAG CER</th>
+<th>FRAG WER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>00:00:00</td>
+<td>00:00:04</td>
+<td>4.67</td>
+<td>1</td>
+<td>1</td>
+<td>0.2031</td>
+<td>0.3000</td>
+</tr>
+<tr>
+<td>2</td>
+<td>00:00:04</td>
+<td>00:01:04</td>
+<td>59.73</td>
+<td>22</td>
+<td>8</td>
+<td>0.0829</td>
+<td>0.1739</td>
+</tr>
+<tr>
+<td>3</td>
+<td>00:01:04</td>
+<td>00:01:22</td>
+<td>17.73</td>
+<td>6</td>
+<td>3</td>
+<td>0.0278</td>
+<td>0.1111</td>
+</tr>
+<tr>
+<td>4</td>
+<td>00:01:24</td>
+<td>00:01:38</td>
+<td>14.0</td>
+<td>5</td>
+<td>3</td>
+<td>0.0443</td>
+<td>0.1217</td>
+</tr>
+<tr>
+<td>5</td>
+<td>00:01:38</td>
+<td>00:01:49</td>
+<td>11.2</td>
+<td>4</td>
+<td>3</td>
+<td>0.0413</td>
+<td>0.2963</td>
+</tr>
+<tr>
+<td><strong>Average</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>0.0799</strong></td>
+<td><strong>0.2006</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sample 5</strong> — DD India, 10 mins</p>
+<p><em>Contains 32 segments in total; only the first 9 are shown below for brevity. The average row reflects the full segment set.</em></p>
+<table>
+<thead>
+<tr>
+<th>SEG</th>
+<th>START</th>
+<th>END</th>
+<th>DUR</th>
+<th>JUMP</th>
+<th>STORIES</th>
+<th>FRAG CER</th>
+<th>FRAG WER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>00:00:00</td>
+<td>00:00:05</td>
+<td>5.6</td>
+<td>2</td>
+<td>1</td>
+<td>0.0000</td>
+<td>0.0000</td>
+</tr>
+<tr>
+<td>2</td>
+<td>00:00:06</td>
+<td>00:00:23</td>
+<td>16.8</td>
+<td>6</td>
+<td>2</td>
+<td>0.0761</td>
+<td>0.1825</td>
+</tr>
+<tr>
+<td>3</td>
+<td>00:00:23</td>
+<td>00:00:36</td>
+<td>13.07</td>
+<td>4</td>
+<td>3</td>
+<td>0.1053</td>
+<td>0.2083</td>
+</tr>
+<tr>
+<td>4</td>
+<td>00:00:36</td>
+<td>00:00:50</td>
+<td>14.0</td>
+<td>5</td>
+<td>2</td>
+<td>0.0846</td>
+<td>0.1666</td>
+</tr>
+<tr>
+<td>5</td>
+<td>00:00:52</td>
+<td>00:01:14</td>
+<td>22.4</td>
+<td>8</td>
+<td>4</td>
+<td>0.1077</td>
+<td>0.3167</td>
+</tr>
+<tr>
+<td>6</td>
+<td>00:01:14</td>
+<td>00:01:34</td>
+<td>19.6</td>
+<td>7</td>
+<td>4</td>
+<td>0.0350</td>
+<td>0.0357</td>
+</tr>
+<tr>
+<td>7</td>
+<td>00:01:34</td>
+<td>00:02:45</td>
+<td>70.93</td>
+<td>26</td>
+<td>9</td>
+<td>0.2145</td>
+<td>0.3588</td>
+</tr>
+<tr>
+<td>8</td>
+<td>00:02:45</td>
+<td>00:02:56</td>
+<td>11.2</td>
+<td>4</td>
+<td>1</td>
+<td>0.0256</td>
+<td>0.0833</td>
+</tr>
+<tr>
+<td>9</td>
+<td>00:02:57</td>
+<td>00:03:06</td>
+<td>14.93</td>
+<td>3</td>
+<td>3</td>
+<td>0.0417</td>
+<td>0.0833</td>
+</tr>
+<tr>
+<td><strong>Average (all 32 segments)</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>0.1119</strong></td>
+<td><strong>0.2393</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sample 6</strong> — CNN News18, 10 mins</p>
+<table>
+<thead>
+<tr>
+<th>SEG</th>
+<th>START</th>
+<th>END</th>
+<th>DUR</th>
+<th>JUMP</th>
+<th>STORIES</th>
+<th>FRAG CER</th>
+<th>FRAG WER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>00:00:00</td>
+<td>00:07:54</td>
+<td>474.13</td>
+<td>177</td>
+<td>39</td>
+<td>0.1751</td>
+<td>0.3300</td>
+</tr>
+<tr>
+<td>2</td>
+<td>00:07:54</td>
+<td>00:08:08</td>
+<td>14.0</td>
+<td>5</td>
+<td>2</td>
+<td>0.0053</td>
+<td>0.0357</td>
+</tr>
+<tr>
+<td>3</td>
+<td>00:08:08</td>
+<td>00:08:22</td>
+<td>14.0</td>
+<td>5</td>
+<td>1</td>
+<td>0.0123</td>
+<td>0.0909</td>
+</tr>
+<tr>
+<td>4</td>
+<td>00:08:23</td>
+<td>00:09:46</td>
+<td>83.07</td>
+<td>31</td>
+<td>6</td>
+<td>0.0508</td>
+<td>0.2273</td>
+</tr>
+<tr>
+<td>5</td>
+<td>00:09:47</td>
+<td>00:09:55</td>
+<td>8.4</td>
+<td>3</td>
+<td>1</td>
+<td>0.0000</td>
+<td>0.0000</td>
+</tr>
+<tr>
+<td><strong>Average</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>0.0487</strong></td>
+<td><strong>0.1368</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Analysis:</strong> Across the four shorter samples (1 and 2 minute clips), fragment CER stays low (0.01–0.10), consistent with the precision-based scoring approach - each segment's extracted text is judged only against the reference text it actually corresponds to. Sample 2 is a partial outlier, with segment 1 (a short 4.67s fragment) showing a comparatively high 0.2031 CER despite the sample's overall average staying moderate. The two 10-minute samples show the highest segment-mode averages overall (Sample 5: 0.1119, Sample 6: 0.0487, per the full-length vs. segment comparison below) - within Sample 5's rows shown here, segment 7 (a 70.93s fragment) stands out at 0.2145 CER, while Sample 6's error is led by segment 1, its longest fragment at 474.13s, with a CER of 0.1751.</p>
+<h4 id="full-length-vs-segment-mode-comparison">Full-Length vs. Segment Mode - Comparison<a class="headerlink" href="#full-length-vs-segment-mode-comparison" title="Permanent link">&para;</a></h4>
+<p>The table below aggregates both modes' CER and WER across all six evaluation videos, mirroring how the extraction strategies are compared directly.</p>
+<table>
+<thead>
+<tr>
+<th>Sample</th>
+<th>Channel</th>
+<th>Duration</th>
+<th>Full-Length CER</th>
+<th>Segment Avg CER</th>
+<th>Full-Length WER</th>
+<th>Segment Avg WER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sample 1</td>
+<td>DD India</td>
+<td>1 min</td>
+<td>0.1202</td>
+<td>0.0301</td>
+<td>0.1949</td>
+<td>0.0635</td>
+</tr>
+<tr>
+<td>Sample 2</td>
+<td>DD India</td>
+<td>2 mins</td>
+<td>0.0571</td>
+<td>0.0799</td>
+<td>0.2187</td>
+<td>0.2006</td>
+</tr>
+<tr>
+<td>Sample 3</td>
+<td>CNN News18</td>
+<td>1 min</td>
+<td>0.0328</td>
+<td>n/a</td>
+<td>0.0976</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>Sample 4</td>
+<td>CNN News18</td>
+<td>2 mins</td>
+<td>0.0379</td>
+<td>n/a</td>
+<td>0.0900</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>Sample 5</td>
+<td>DD India</td>
+<td>10 mins</td>
+<td>0.1536</td>
+<td>0.1119</td>
+<td>0.3234</td>
+<td>0.2393</td>
+</tr>
+<tr>
+<td>Sample 6</td>
+<td>CNN News18</td>
+<td>10 mins</td>
+<td>0.2834</td>
+<td>0.0487</td>
+<td>0.3705</td>
+<td>0.1368</td>
+</tr>
+<tr>
+<td><strong>Average</strong></td>
+<td></td>
+<td></td>
+<td><strong>0.1142</strong></td>
+<td><strong>0.0451</strong></td>
+<td><strong>0.2159</strong></td>
+<td><strong>0.1067</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>Average across the five samples where segment mode produced results (excludes Sample 3 &amp; 4). "n/a" indicates no segments were generated.</em></p>
+<p>The two charts below plot the same four comparable samples (1, 2, 5, 6) — bars are full-length mode, the overlaid line is segment mode's average:</p>
+<pre class="mermaid"><code>%%{init: { "themeVariables": { "xyChart": { "plotColorPalette": "#3F51B5" } } } }%%
+xychart-beta
+    title "CER (%) - Full-Length (bar) vs Segment Mode (line)"
+    x-axis ["Sample 1", "Sample 2", "Sample 5", "Sample 6"]
+    y-axis "CER (%)" 0 --&gt; 30
+    bar [12.02, 5.71, 15.36, 28.34]
+    line [3.01, 7.99, 11.19, 4.87]</code></pre>
+<pre class="mermaid"><code>%%{init: { "themeVariables": { "xyChart": { "plotColorPalette": "#3fb55b" } } } }%%
+xychart-beta
+    title "WER (%) - Full-Length (bar) vs Segment Mode (line)"
+    x-axis ["Sample 1", "Sample 2", "Sample 5", "Sample 6"]
+    y-axis "WER (%)" 0 --&gt; 40
+    bar [19.49, 21.87, 32.34, 37.05]
+    line [6.35, 20.06, 23.93, 13.68]</code></pre>
+<p><strong>Segment mode's lower error:</strong> Segment mode shows a lower average CER/WER than full-length mode on three of the four comparable samples - most visibly on Sample 6, where segment mode's CER (0.0487) is less than a fifth of full-length mode's (0.2834). This is consistent with segment mode's precision-based evaluation: shorter, scene-bounded fragments give the OCR/story-assembly pipeline less room to drift or misalign story boundaries than one long continuous read does.</p>
+<p><strong>Sample 2 is the exception:</strong> Segment mode's average CER is higher than full-length mode's, though not dramatically (0.0799 vs. 0.0571). Its segments were also comparatively few (5 segments across 2 minutes, durations from 4.67s to 59.73s), with segment 1's short 4.67s fragment landing close to the pipeline's own 3-second minimum-duration filter - which may partly explain the reduced reliability there relative to the other samples.</p>
+<p><strong>Caveat:</strong> The two modes are not scored on an identical basis. Segment mode uses fragment-aligned, precision-style scoring (<code>evaluate_segments</code>), while full-length mode scores each story against its best-matching full reference line and reports the boundary-filtered average (<code>evaluate_all</code>). The deltas above should therefore be read as directionally informative rather than strictly like-for-like.</p>
+<p><br></p>
+<h2 id="7-deployment">7. Deployment<a class="headerlink" href="#7-deployment" title="Permanent link">&para;</a></h2>
+<p>Unlike a decoupled backend/frontend architecture, this project ships as a single Streamlit application - extraction, evaluation, and the results UI (including video playback synced to the extracted transcript) all run within one process. A single user runs one extraction at a time, so there's no need for shared state, a job queue, or a separate API layer - a full client-server split would only add deployment overhead here without changing what the tool does.</p>
+<p><strong>Running the app</strong>
+<div class="highlight"><pre><span></span><code>streamlit<span class="w"> </span>run<span class="w"> </span>app.py
+</code></pre></div></p>
+<p>Full setup, dependency, and CLI instructions are in the <strong><a href="Setup_Guide/">Setup and Installation Guide</a></strong>.</p>
+<p><br></p>
+<h2 id="8-conclusion">8. Conclusion<a class="headerlink" href="#8-conclusion" title="Permanent link">&para;</a></h2>
+<p>Across six broadcast clips, segment mode's precision-based evaluation shows a lower average error rate than full-length mode, most clearly on the two 10-minute clips where full-length mode's error builds up over the long continuous read. The two modes also fail differently: full-length mode's error rises steadily with clip length, while segment mode's error is usually low but occasionally spikes on a single bad segment (as with Sample 6's fragment 1, or Sample 2's short, closely-packed segments).</p>
+<p>Full-length mode stays simpler and doesn't depend on scene-change detection finding good cut points - Sample 4's lack of scene changes shows that dependency directly. In practice, segment mode looks like the better choice for shorter clips with clear scene changes, while full-length mode is more dependable for longer or visually static clips. A hybrid approach - segment mode where cuts are dense enough, full-length otherwise - would be a natural next step rather than picking one mode per video upfront.</p>
 
 
 
@@ -618,6 +1332,10 @@ streamlit run app.py
     
     
       <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>
